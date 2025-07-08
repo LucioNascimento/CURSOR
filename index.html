@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Venda com a Superbid Exchange</title>
+  <link href="https://fonts.googleapis.com/css?family=Barlow:700,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Barlow', Arial, sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    .logo {
+      display: block;
+      margin: 40px auto 24px auto;
+      width: 140px;
+    }
+    .center {
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.4em;
+      margin: 0.5em 0 0.2em 0;
+      font-weight: 700;
+    }
+    .subtitle {
+      color: #666;
+      font-size: 1.15em;
+      margin-bottom: 2.5em;
+    }
+    .modalidades {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0001;
+      max-width: 900px;
+      margin: 0 auto 32px auto;
+      padding: 32px 36px 24px 36px;
+    }
+    .modalidades h2 {
+      color: #a259e6;
+      font-size: 1.5em;
+      margin-bottom: 0.7em;
+      margin-top: 0;
+      text-align: center;
+    }
+    .modalidades ul {
+      margin: 0 0 1.5em 0;
+      padding-left: 1.2em;
+    }
+    .modalidades li {
+      margin-bottom: 0.7em;
+      font-size: 1.05em;
+      line-height: 1.5;
+    }
+    .perfis-row {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-bottom: 2em;
+      flex-wrap: wrap;
+    }
+    .perfil {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0001;
+      padding: 32px 36px 24px 36px;
+      width: 420px;
+      min-width: 320px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .perfil h3 {
+      font-size: 1.2em;
+      margin-bottom: 0.2em;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .perfil .icon-title {
+      font-size: 1.5em;
+      border-radius: 50%;
+      background: #f5f5f5;
+      padding: 10px;
+      margin-right: 10px;
+      color: #a259e6;
+      border: 2px solid #a259e6;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .perfil.leiloeiro .icon-title {
+      color: #ff9800;
+      border-color: #ff9800;
+    }
+    .perfil.pf .icon-title {
+      color: #e64a19;
+      border-color: #e64a19;
+    }
+    .perfil ul {
+      list-style: none;
+      padding: 0;
+      margin: 1.2em 0 1.2em 0;
+    }
+    .perfil li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 1em;
+    }
+    .perfil li .icon-list {
+      font-size: 1.2em;
+      color: #bbb;
+      margin-top: 2px;
+      min-width: 24px;
+      text-align: center;
+    }
+    .perfil.leiloeiro li .icon-list {
+      color: #ff9800;
+    }
+    .perfil.pf li .icon-list {
+      color: #e64a19;
+    }
+    .perfil .btn {
+      display: inline-block;
+      margin-top: 1em;
+      padding: 12px 28px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      color: #fff;
+      background: #a259e6;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s;
+    }
+    .perfil .btn.pj { background: #a259e6; }
+    .perfil .btn.leiloeiro { background: #ff9800; }
+    .perfil .btn.pf { background: #e64a19; }
+    .perfil .info {
+      font-size: 1em;
+      color: #444;
+      margin-bottom: 0.5em;
+    }
+    .perfil .extra {
+      margin-top: 1.5em;
+      font-size: 1em;
+      color: #444;
+    }
+    @media (max-width: 1000px) {
+      .perfis-row { flex-direction: column; align-items: center; }
+      .perfil { width: 95%; }
+      .modalidades { padding: 18px 6vw 24px 6vw; }
+    }
+    .pf-block {
+      max-width: 900px;
+      margin: 0 auto 40px auto;
+    }
+    .cta {
+      text-align: center;
+      margin-top: 2.5em;
+      margin-bottom: 1.5em;
+      font-size: 1.15em;
+    }
+    .cta strong {
+      color: #a259e6;
+    }
+    .footer {
+      text-align: center;
+      color: #888;
+      font-size: 1em;
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://94d82552ac062b9093d416534d6816c7.cdn.bubble.io/cdn-cgi/image/w=128,h=,f=auto,dpr=1,fit=contain/f1714668588501x698781396436100700/logo.png" alt="Superbid Exchange" class="logo">
+  <div class="center">
+    <h1>Venda com a Superbid Exchange</h1>
+    <div class="subtitle">
+      A Superbid Exchange oferece um ecossistema completo e inovador para potencializar seus negócios, garantindo segurança, alcance e eficiência. Atuamos em diversos segmentos, proporcionando soluções personalizadas para cada perfil de vendedor.
+    </div>
+  </div>
+  <div class="modalidades">
+    <h2>Modalidades de Venda</h2>
+    <ul>
+      <li><b>Leilão</b>: Venda competitiva com prazo definido, onde os interessados fazem lances crescentes até a conclusão da negociação, garantindo maior transparência e maximização do valor.</li>
+      <li><b>Tomada de Preço</b>: Modelo dinâmico no qual compradores enviam propostas, permitindo ao vendedor escolher a melhor oferta com agilidade e flexibilidade.</li>
+      <li><b>Compre Já (Mercado Balcão)</b>: Venda direta com preço fixado pelo vendedor, oferecendo praticidade e rapidez ao comprador. O comprador também pode enviar uma proposta menor para avaliação do vendedor.</li>
+    </ul>
+  </div>
+  <div class="perfis-row">
+    <div class="perfil">
+      <h3><span class="icon-title"><i class="fa-solid fa-building"></i></span>Sou Empresa</h3>
+      <div class="info">Seja você uma pequena, média ou grande empresa, a Superbid Exchange é a plataforma ideal para potencializar suas vendas:</div>
+      <ul>
+        <li><span class="icon-list"><i class="fa-regular fa-file-lines"></i></span><div><b>Anúncios Detalhados</b>: Informe todos os detalhes do produto para garantir máxima visibilidade e atrair compradores qualificados.</div></li>
+        <li><span class="icon-list"><i class="fa-regular fa-circle-check"></i></span><div><b>Validação Especializada</b>: Nossa equipe revisa e orienta a melhor estratégia para destacar e vender seu produto.</div></li>
+        <li><span class="icon-list"><i class="fa-solid fa-bullhorn"></i></span><div><b>Alcance Exponencial</b>: Seu produto estará disponível para milhares de compradores ativos na plataforma.</div></li>
+        <li><span class="icon-list"><i class="fa-solid fa-handshake"></i></span><div><b>Negociação Simplificada</b>: Receba e negocie propostas diretamente em nosso ambiente digital seguro.</div></li>
+        <li><span class="icon-list"><i class="fa-solid fa-lock"></i></span><div><b>Transações Seguras</b>: Pagamentos automáticos através da Conta de Pagamento Superbid Pay.</div></li>
+        <li><span class="icon-list"><i class="fa-solid fa-truck"></i></span><div><b>Logística Descomplicada</b>: Retirada dos bens sob responsabilidade do comprador, com gestão facilitada pela plataforma.</div></li>
+        <li><span class="icon-list"><i class="fa-solid fa-headset"></i></span><div><b>Suporte Completo</b>: Nossa equipe acompanha você em todas as etapas, garantindo a melhor experiência.</div></li>
+      </ul>
+      <a href="#" class="btn pj">Quero vender como PJ</a>
+    </div>
+    <div class="perfil leiloeiro">
+      <h3><span class="icon-title"><i class="fa-solid fa-gavel"></i></span>Sou Leiloeiro – Agente de Venda</h3>
+      <div class="info">Potencialize sua atuação profissional com nossa infraestrutura:</div>
+      <ul>
+        <li><span class="icon-list"><i class="fa-solid fa-store"></i></span><div><b>Loja Digital Própria</b>: Contrate nossa plataforma, cadastre clientes e promova eventos exclusivos.</div></li>
+        <li><span class="icon-list"><i class="fa-solid fa-network-wired"></i></span><div><b>Ecossistema Completo</b>: Utilize a Superbid Exchange para oferecer um ambiente robusto e eficiente aos seus compradores.</div></li>
+        <li><span class="icon-list"><i class="fa-solid fa-users"></i></span><div><b>Audiência Qualificada</b>: Aumente sua base de clientes com compradores interessados e ativos.</div></li>
+        <li><span class="icon-list"><i class="fa-solid fa-lock"></i></span><div><b>Segurança nas Transações</b>: Gerencie pagamentos através da Conta de Pagamento Superbid Pay, com automações e segurança total.</div></li>
+        <li><span class="icon-list"><i class="fa-solid fa-truck"></i></span><div><b>Gestão Facilitada de Retirada</b>: Plataforma com sistema integrado via token para validação e controle dos bens negociados.</div></li>
+        <li><span class="icon-list"><i class="fa-solid fa-headset"></i></span><div><b>Apoio Pós-Venda Integral</b>: Suporte contínuo da equipe especializada Superbid.</div></li>
+      </ul>
+      <a href="#" class="btn leiloeiro">Sou leiloeiro</a>
+    </div>
+  </div>
+  <div class="pf-block">
+    <div class="perfil pf">
+      <h3><span class="icon-title"><i class="fa-solid fa-user"></i></span>Sou Pessoa Física</h3>
+      <div class="info">Avaliaremos se seu perfil atende os requisitos da plataforma para vender seus bens com segurança e praticidade.</div>
+      <a href="#" class="btn pf">Quero vender como PF</a>
+    </div>
+  </div>
+  <div class="cta">
+    <strong>Pronto para começar?</strong><br>
+    Preencha o formulário com seus dados e nossa equipe especializada entrará em contato para esclarecer dúvidas e iniciar suas vendas na plataforma líder em soluções de comercialização online.
+  </div>
+  <div class="footer">
+    <b>Superbid Exchange:</b> mais alcance, mais segurança, mais resultados.
+  </div>
+</body>
+</html>
