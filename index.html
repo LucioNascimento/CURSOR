@@ -68,6 +68,16 @@
     .itens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2em; }
     .item-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
     .item-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .item-illustration { height: 180px; display: flex; align-items: center; justify-content: center; }
+    .item-illustration svg { width: 70%; height: auto; max-height: 150px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.08)); }
+    .type-truck { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
+    .type-excavator { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
+    .type-sedan { background: linear-gradient(135deg, #ede7f6, #d1c4e9); }
+    .type-factory { background: linear-gradient(135deg, #eceff1, #cfd8dc); }
+    .type-server { background: linear-gradient(135deg, #e0f2f1, #b2dfdb); }
+    .type-tools { background: linear-gradient(135deg, #fff8e1, #ffecb3); }
+    .type-office { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
+    .type-generator { background: linear-gradient(135deg, #ffebee, #ffcdd2); }
     .item-body { padding: 0.9em 1em 1.1em; display: flex; flex-direction: column; gap: 0.6em; }
     .item-title { font-weight: 700; color: #222; font-size: 1.05em; line-height: 1.3; }
     .item-meta { color: #666; font-size: 0.92em; }
@@ -151,7 +161,17 @@
       <p class="sub">Seleção recente de oportunidades na Superbid</p>
       <div class="itens-grid">
         <div class="item-card">
-          <img loading="lazy" src="https://loremflickr.com/800/600/truck,delivery?lock=1" alt="Caminhão Baú 3/4" />
+          <div class="item-illustration type-truck" role="img" aria-label="Ilustração de caminhão baú">
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="32" width="62" height="26" rx="4" fill="#1565c0"/>
+              <rect x="70" y="40" width="30" height="18" rx="3" fill="#1976d2"/>
+              <rect x="80" y="34" width="12" height="10" rx="2" fill="#90caf9"/>
+              <circle cx="28" cy="62" r="8" fill="#263238"/>
+              <circle cx="28" cy="62" r="4" fill="#90a4ae"/>
+              <circle cx="75" cy="62" r="8" fill="#263238"/>
+              <circle cx="75" cy="62" r="4" fill="#90a4ae"/>
+            </svg>
+          </div>
           <div class="item-body">
             <div class="item-title">Caminhão Baú 3/4</div>
             <div class="item-meta">Diesel • 2016 • 180.000 km</div>
@@ -159,7 +179,18 @@
           </div>
         </div>
         <div class="item-card">
-          <img loading="lazy" src="https://loremflickr.com/800/600/excavator,construction?lock=2" alt="Escavadeira Hidráulica 20T" />
+          <div class="item-illustration type-excavator" role="img" aria-label="Ilustração de escavadeira">
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+              <rect x="16" y="52" width="42" height="10" rx="5" fill="#8d6e63"/>
+              <rect x="12" y="58" width="50" height="8" rx="4" fill="#6d4c41"/>
+              <rect x="46" y="36" width="18" height="12" rx="2" fill="#ffa000"/>
+              <rect x="49" y="38" width="10" height="7" rx="1" fill="#fff8e1"/>
+              <path d="M64 40 L88 28 L102 40" stroke="#fb8c00" stroke-width="6" fill="none" stroke-linecap="round"/>
+              <path d="M100 40 L110 46 L100 46 Z" fill="#ef6c00"/>
+              <circle cx="28" cy="64" r="6" fill="#263238"/>
+              <circle cx="50" cy="64" r="6" fill="#263238"/>
+            </svg>
+          </div>
           <div class="item-body">
             <div class="item-title">Escavadeira Hidráulica 20T</div>
             <div class="item-meta">Obras • 2014 • Revisada</div>
@@ -167,7 +198,16 @@
           </div>
         </div>
         <div class="item-card">
-          <img loading="lazy" src="https://loremflickr.com/800/600/sedan,car?lock=3" alt="Sedan Executivo 2.0" />
+          <div class="item-illustration type-sedan" role="img" aria-label="Ilustração de sedan executivo">
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+              <rect x="16" y="46" width="88" height="14" rx="8" fill="#7e57c2"/>
+              <polygon points="32,46 52,36 86,36 96,46" fill="#9575cd"/>
+              <rect x="38" y="38" width="14" height="6" fill="#e1bee7"/>
+              <rect x="56" y="38" width="14" height="6" fill="#e1bee7"/>
+              <circle cx="36" cy="62" r="7" fill="#263238"/>
+              <circle cx="84" cy="62" r="7" fill="#263238"/>
+            </svg>
+          </div>
           <div class="item-body">
             <div class="item-title">Sedan Executivo 2.0</div>
             <div class="item-meta">Flex • 2019 • 48.000 km</div>
@@ -175,7 +215,19 @@
           </div>
         </div>
         <div class="item-card">
-          <img loading="lazy" src="https://loremflickr.com/800/600/factory,production?lock=4" alt="Linha de Produção Modular" />
+          <div class="item-illustration type-factory" role="img" aria-label="Ilustração de fábrica">
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+              <rect x="12" y="44" width="30" height="24" fill="#90a4ae"/>
+              <rect x="46" y="38" width="30" height="30" fill="#78909c"/>
+              <rect x="80" y="28" width="12" height="40" fill="#607d8b"/>
+              <circle cx="86" cy="20" r="4" fill="#cfd8dc"/>
+              <circle cx="92" cy="14" r="6" fill="#cfd8dc"/>
+              <rect x="18" y="50" width="6" height="6" fill="#eceff1"/>
+              <rect x="26" y="50" width="6" height="6" fill="#eceff1"/>
+              <rect x="18" y="58" width="6" height="6" fill="#eceff1"/>
+              <rect x="26" y="58" width="6" height="6" fill="#eceff1"/>
+            </svg>
+          </div>
           <div class="item-body">
             <div class="item-title">Linha de Produção Modular</div>
             <div class="item-meta">Indústria • 2017 • Completa</div>
@@ -183,7 +235,15 @@
           </div>
         </div>
         <div class="item-card">
-          <img loading="lazy" src="https://loremflickr.com/800/600/server,rack?lock=5" alt="Servidor Rack 2U" />
+          <div class="item-illustration type-server" role="img" aria-label="Ilustração de servidor">
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+              <rect x="28" y="24" width="64" height="48" rx="6" fill="#26a69a"/>
+              <rect x="36" y="32" width="48" height="4" fill="#80cbc4"/>
+              <rect x="36" y="40" width="48" height="4" fill="#80cbc4"/>
+              <rect x="36" y="48" width="48" height="4" fill="#80cbc4"/>
+              <rect x="36" y="56" width="32" height="4" fill="#80cbc4"/>
+            </svg>
+          </div>
           <div class="item-body">
             <div class="item-title">Servidor Rack 2U</div>
             <div class="item-meta">TI • Dual Xeon • 128 GB RAM</div>
@@ -191,7 +251,14 @@
           </div>
         </div>
         <div class="item-card">
-          <img loading="lazy" src="https://loremflickr.com/800/600/tools,workshop?lock=6" alt="Kit Ferramentas Pneumáticas" />
+          <div class="item-illustration type-tools" role="img" aria-label="Ilustração de ferramentas">
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+              <rect x="30" y="30" width="10" height="28" rx="2" fill="#fbc02d"/>
+              <rect x="28" y="26" width="14" height="6" rx="2" fill="#fdd835"/>
+              <path d="M74 26 l10 10 l-6 6 l-10 -10 z" fill="#ffa000"/>
+              <rect x="60" y="40" width="26" height="6" rx="3" fill="#ffca28"/>
+            </svg>
+          </div>
           <div class="item-body">
             <div class="item-title">Kit Ferramentas Pneumáticas</div>
             <div class="item-meta">Oficina • Semi-novo</div>
@@ -199,7 +266,14 @@
           </div>
         </div>
         <div class="item-card">
-          <img loading="lazy" src="https://loremflickr.com/800/600/office,furniture?lock=7" alt="Lote Mobiliário Escritório" />
+          <div class="item-illustration type-office" role="img" aria-label="Ilustração de mobiliário de escritório">
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+              <rect x="54" y="26" width="12" height="16" rx="2" fill="#f48fb1"/>
+              <rect x="48" y="42" width="24" height="12" rx="2" fill="#f06292"/>
+              <rect x="58" y="54" width="4" height="10" fill="#ad1457"/>
+              <rect x="46" y="64" width="28" height="4" fill="#ad1457"/>
+            </svg>
+          </div>
           <div class="item-body">
             <div class="item-title">Lote Mobiliário Escritório</div>
             <div class="item-meta">Cadeiras • Mesas • Armários</div>
@@ -207,7 +281,14 @@
           </div>
         </div>
         <div class="item-card">
-          <img loading="lazy" src="https://loremflickr.com/800/600/generator,diesel?lock=8" alt="Gerador 150 kVA" />
+          <div class="item-illustration type-generator" role="img" aria-label="Ilustração de gerador">
+            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+              <rect x="22" y="36" width="76" height="26" rx="6" fill="#ef5350"/>
+              <polygon points="56,38 66,52 60,52 68,66 50,48 56,48" fill="#ffeb3b"/>
+              <rect x="30" y="44" width="14" height="6" fill="#ffcdd2"/>
+              <rect x="90" y="44" width="6" height="6" fill="#ffcdd2"/>
+            </svg>
+          </div>
           <div class="item-body">
             <div class="item-title">Gerador 150 kVA</div>
             <div class="item-meta">Diesel • Silenciado • Pronto uso</div>
