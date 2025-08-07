@@ -3,839 +3,271 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Explore as modalidades de venda da Superbid: Compre Já, Leilão, Mercado Balcão e Tomada de Preço. Uma plataforma segura e eficiente para transformar ativos em liquidez.">
-  <meta name="keywords" content="Superbid, Compre Já, Leilão, Mercado Balcão, Tomada de Preço, plataforma de vendas, ativos, liquidez, venda de bens, compradores, vendedores">
-  <meta name="author" content="Superbid Exchange">
-  <meta property="og:title" content="Superbid - Modalidades de Venda e Mensageria WhatsApp">
-  <meta property="og:description" content="Descubra como transformar ativos em liquidez com as soluções da Superbid: Leilões, Compras Diretas, Negociação Flexível e mais.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.superbid.net">
-  <meta property="og:image" content="https://www.superbid.net/images/og-superbid.jpg">
-  <meta name="robots" content="index, follow">
-  <title>Superbid | Quero Vender</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="Base de Layout/LOGO.png" />
-  
-  <!-- iziToast -->
-  <link href="https://cdn.jsdelivr.net/npm/izitoast@1.4/dist/css/iziToast.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/izitoast@1.4/dist/js/iziToast.min.js"></script>
-
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-KZBCVNP');</script>
-  <!-- End Google Tag Manager -->
+  <meta name="description" content="Superbid - Infraestrutura inteligente para transformar ativos em liquidez. Modalidades de venda, educação, geração de leads e contato via WhatsApp." />
+  <meta name="keywords" content="Superbid, leilão, compra direta, mercado balcão, tomada de preço, lead generation, WhatsApp" />
+  <meta name="author" content="Superbid Exchange" />
+  <title>Superbid | Infraestrutura Inteligente de Venda de Ativos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Barlow', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-      margin: 0;
-      padding-top: 120px;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-
-    /* Estilos do Ticker da Bolsa de Valores */
-    .stock-ticker {
-      position: fixed;
+    /* Reset e base */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Barlow', sans-serif; color: #333; background: #f5f5f5; line-height: 1.6; }
+    a { color: #007bff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3 { color: #222; margin-bottom: 0.5em; }
+    nav {
+      background: #311b92;
+      padding: 0.6em 1em;
+      position: sticky;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 40px;
-      background: linear-gradient(90deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
-      overflow: hidden;
-      z-index: 1001;
-      border-bottom: 2px solid #ff9800;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .ticker-content {
+      z-index: 1000;
       display: flex;
-      white-space: nowrap;
-      animation: ticker-scroll 60s linear infinite;
-      padding: 10px 0;
+      align-items: center;
+      justify-content: space-between;
     }
-
-    .ticker-item {
-      display: inline-block;
-      color: #00ff00;
-      font-weight: bold;
-      font-size: 14px;
-      margin-right: 60px;
-      text-shadow: 0 0 5px #00ff00;
-      font-family: 'Courier New', monospace;
-      letter-spacing: 1px;
+    nav .logo {
+      height: clamp(36px, 6vw, 64px);
+      width: auto;
+      vertical-align: middle;
     }
-
-    .ticker-item:nth-child(even) {
-      color: #ffff00;
-      text-shadow: 0 0 5px #ffff00;
-    }
-
-    .ticker-item:nth-child(3n) {
-      color: #00ffff;
-      text-shadow: 0 0 5px #00ffff;
-    }
-
-    @keyframes ticker-scroll {
-      0% {
-        transform: translateX(100%);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-
-    /* Efeito de brilho nos itens do ticker */
-    .ticker-item:hover {
-      animation: ticker-glow 0.5s ease-in-out;
-    }
-
-    @keyframes ticker-glow {
-      0%, 100% {
-        text-shadow: 0 0 5px currentColor;
-      }
-      50% {
-        text-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
-      }
-    }
-    section {
-      padding: 2.8em 0.5em 2.8em 0.5em;
-      margin-bottom: 2.8em;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.07);
-      max-width: 1200px;
-      margin-left: auto;
-      margin-right: auto;
-      position: relative;
-    }
-    .section-title {
+    nav ul { list-style: none; display: flex; gap: 1.5em; justify-content: flex-end; align-items: center; margin: 0; }
+    nav li { display: inline; }
+    nav a { color: #fff; font-weight: 600; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 2em 1em; }
+    .btn { 
+      display: inline-block; 
+      padding: 0.8em 1.5em; 
+      border-radius: 8px; 
+      font-weight: 600; 
       text-align: center;
-      font-size: 1.8em;
-      margin-bottom: 1.5em;
-      color: white;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+      transition: background 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(50,50,50,0.04);
     }
-    /* Background colors for each modality */
-    #compre-ja {
-      background-color: #4caf50;
+    .btn-primary { 
+      background: #2e7d32; 
+      color: #fff;
+      border: none;
     }
-    #leilao {
-      background-color: #2196f3;
+    .btn-secondary { 
+      background: #1565c0; 
+      color: #fff;
+      border: none;
     }
-    #mercado-balcao {
-      background-color: #9c27b0;
+    .btn-whatsapp { 
+      background: #20ba5a; 
+      color: #fff;
+      border: none;
     }
-    #tomada-de-preco {
-      background-color: #ff9800;
+    section { margin-bottom: 3em; }
+    /* Hero */
+    #hero {
+      background: linear-gradient(90deg, #1e3c72, #2a5298);
+      color: #fff;
+      text-align: center;
+      padding: 4em 1em;
     }
-
-    .timeline {
-      display: flex;
-      gap: 2.6em;
-      overflow-x: auto;
-      padding: 2em 2em 2em 2em;
-      align-items: flex-start;
-      position: relative;
-      background: rgba(255,255,255,0.1);
-      border-radius: 14px;
-      margin-bottom: 0;
-      /* For visual separation inside section */
-      box-shadow: 0 2px 20px rgba(0,0,0,0.03);
-      justify-content: center;
-      scroll-behavior: smooth;
-      animation: auto-scroll 40s linear infinite;
-    }
-
-    @keyframes auto-scroll {
-      0% {
-        transform: translateX(0%);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-    .timeline-wrapper {
-      overflow: hidden;
-      position: relative;
+    #hero h1 { font-size: 2.5em; margin-bottom: 0.5em; }
+    #hero p { font-size: 1.2em; margin-bottom: 1.5em; }
+    #hero .actions { display: flex; gap: 1em; flex-wrap: wrap; justify-content: center; }
+    /* Personas */
+    #personas { text-align: center; }
+    #personas .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1.5em; margin-top: 2em; }
+    #personas .card { background: #fff; padding: 1.5em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    #personas .card h3 { margin-bottom: 0.5em; }
+    #personas .card p { margin-bottom: 1em; font-size: 0.95em; }
+    /* Modalidades */
+    #modalidades h2 { text-align: center; margin-bottom: 1em; }
+    #modalidades .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.5em; }
+    #modalidades .card { background: #fff; padding: 1.5em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    #modalidades .card h3 { margin-bottom: 0.5em; }
+    #modalidades .card ul { margin-left: 1em; list-style: disc; margin-bottom: 1em; }
+    /* Comparativo */
+    #comparativo table { width: 100%; border-collapse: collapse; margin-top: 1em; }
+    #comparativo th, #comparativo td { border: 1px solid #ddd; padding: 0.8em; text-align: center; }
+    #comparativo th { background: #512da8; color: #fff; }
+    /* Lead gen */
+    #lead-gen { background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
+    #lead-gen form { display: flex; flex-direction: column; gap: 1em; max-width: 400px; margin: 0 auto; }
+    #lead-gen input, #lead-gen select { padding: 0.8em; border: 1px solid #ccc; border-radius: 4px; }
+    /* Footer */
+    footer { background: #1a1a1a; color: #fff; text-align: center; padding: 2em 1em; font-size: 0.9em; }
+    footer a { color: #ffd54f; }
+    /* Card image for modalidades */
+    .card-img {
       width: 100%;
-    }
-    .timeline::-webkit-scrollbar {
-      height: 8px;
-    }
-    .timeline::-webkit-scrollbar-thumb {
-      background-color: rgba(0,0,0,0.2);
+      height: auto;
       border-radius: 4px;
+      margin-bottom: 1em;
     }
 
-    .message-box {
-      background: #fff;
-      border-radius: 14px;
-      padding: 2em 1.3em 1.2em 1.3em;
-      min-width: 250px;
-      max-width: 320px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      position: relative;
-      margin-bottom: 0;
-      margin-top: 0;
-      border: 2px solid transparent;
-      transition: border 0.2s;
-    }
-    .message-box[data-role="Comprador"] {
-      border-color: #4caf50;
-      background: linear-gradient(120deg, #f9fff9 80%, #e8fbe8 100%);
-    }
-    .message-box[data-role="Vendedor"] {
-      border-color: #2196f3;
-      background: linear-gradient(120deg, #f8fbff 80%, #e8f0fa 100%);
-    }
-    .message-box[data-role="Ambos"] {
-      border-color: #ff9800;
-      background: linear-gradient(120deg, #fffaf4 80%, #fff1e0 100%);
-    }
-    .message-box span {
-      font-size: 2.2em;
-      margin-bottom: 0.35em;
-      user-select: none;
-    }
-    .message-box h4 {
-      margin: 0 0 0.4em 0;
-      font-size: 1.18em;
-      color: #222;
-      font-weight: 600;
-    }
-    .message-box .role-label {
-      display: inline-block;
-      font-weight: bold;
-      font-size: 0.98em;
-      margin-bottom: 0.4em;
-      padding: 0.23em 0.85em;
-      border-radius: 12px;
-      letter-spacing: 0.01em;
-      margin-right: 0.5em;
-      margin-top: 0;
-      margin-bottom: 0.6em;
-      background: #f1f1f1;
-      color: #333;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-    }
-    .message-box[data-role="Comprador"] .role-label {
-      background: #e8fbe8;
-      color: #357a38;
-    }
-    .message-box[data-role="Vendedor"] .role-label {
-      background: #e8f0fa;
-      color: #1565c0;
-    }
-    .message-box[data-role="Ambos"] .role-label {
-      background: #fff1e0;
-      color: #d17b00;
-    }
-    .message-box p {
-      margin: 0.1em 0;
-      font-size: 1.06em;
-      color: #555;
-      font-weight: 400;
-    }
-
-    /* Arrows between message boxes */
-    .timeline .message-box:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: -38px;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 48px;
-      width: 38px;
-      background: transparent url('data:image/svg+xml;utf8,<svg width="38" height="48" xmlns="http://www.w3.org/2000/svg"><path d="M8 24h22m-6-6 6 6-6 6" stroke="%23666" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>') center center no-repeat;
-      pointer-events: none;
-      z-index: 2;
-    }
-    .timeline .message-box:last-child::after {
-      content: none;
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
-      .timeline {
-        flex-direction: column;
-        overflow-x: visible;
-        gap: 2em;
-        padding: 1.2em 0.5em 1.2em 0.5em;
-        animation: none !important;
-        transform: none !important;
-      }
-      .timeline .message-box {
-        min-width: 0;
-        width: 100%;
-        margin-bottom: 1.5em;
-        max-width: none;
-      }
-      .timeline .message-box:not(:last-child)::after {
-        content: none;
-      }
-    }
-
-    #modalidades-explicacao {
-      padding: 2em 1em;
-      background-color: #ffffff;
-    }
-    #modalidades-explicacao h2 {
-      text-align: center;
-      font-size: 1.8em;
-      margin-bottom: 1.5em;
-    }
-    .modalidade-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5em;
-      justify-items: center;
-    }
-    .modalidade-box {
-      background: #f9f9f9;
-      border-radius: 8px;
-      padding: 1.2em;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .modalidade-box span {
-      font-size: 2em;
-      display: block;
-      margin-bottom: 0.5em;
-    }
-    .modalidade-box h3 {
-      margin: 0.5em 0;
-      font-size: 1.2em;
-    }
-    .modalidade-box p {
-      font-size: 0.95em;
-      color: #444;
-    }
-
-    #apresentacao-superbid {
-      background-color: #4a148c;
-      padding: 2em 1em 0 1em;
-      border-bottom: 1px solid #ddd;
-      margin-top: 120px;
-    }
-    .apresentacao-container {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-      font-size: 1.1em;
-      color: #ffffff;
-      line-height: 1.6;
-    }
-
-    .logo-superbid {
-      display: block;
-      margin: 0 auto 1em auto;
-      height: 96px;
-    }
-
-    .nav-sbx-logo {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      height: 28px;
-    }
-
-    .apresentacao-container p {
-      font-size: 1.6em !important;
-      font-weight: 500;
-      color: #ffffff !important;
-      font-weight: bold;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
-      line-height: 1.8 !important;
-    }
-
-    /* Melhor contraste dos destaques na faixa roxa */
-    .apresentacao-container p span {
-      color: #ffd54f !important;
-      font-weight: bold;
-    }
-    .modalidade-box span {
-      animation: pulse 1.8s infinite ease-in-out;
-      display: inline-block;
-      transform-origin: center;
-    }
-
-    @keyframes pulse {
-      0%   { transform: scale(1); }
-      50%  { transform: scale(1.15); }
-      100% { transform: scale(1); }
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* Visual separation between role groups in timeline */
-    .timeline-group-divider {
-      width: 2px;
-      min-width: 2px;
-      height: 78px;
-      background: linear-gradient(to bottom, #ddd 10%, #bbb 90%);
-      margin: 0 2.1em;
-      border-radius: 2px;
-      align-self: stretch;
-      box-shadow: 0 0 0 0 #0001;
-    }
-    @media (max-width: 900px) {
-      .timeline-group-divider {
-        width: 85%;
-        min-width: 0;
-        height: 2px;
-        margin: 1.5em auto 1.5em auto;
-        background: linear-gradient(to right, #ddd 10%, #bbb 90%);
-      }
-      
-      /* Ajustes responsivos para o ticker */
-      .stock-ticker {
-        height: 35px;
-      }
-      
-      .ticker-item {
-        font-size: 12px;
-        margin-right: 40px;
-      }
-      
-      body {
-        padding-top: 115px;
-      }
-      
-      #apresentacao-superbid {
-        margin-top: 115px;
-      }
-      
-      nav {
-        top: 35px !important;
-      }
-
-      .logo-superbid {
-        height: 80px;
-      }
-
-      .nav-sbx-logo {
-        height: 24px;
-        left: 10px;
-      }
-    }
-
+    /* Responsivo: ajusta logo em telas pequenas */
     @media (max-width: 600px) {
-      .ticker-item {
-        font-size: 11px;
-        margin-right: 30px;
-      }
-      
-      .stock-ticker {
-        height: 30px;
-      }
-      
-      body {
-        padding-top: 110px;
-      }
-      
-      #apresentacao-superbid {
-        margin-top: 110px;
-      }
-      
-      nav {
-        top: 30px !important;
-      }
-
-      .logo-superbid {
-        height: 68px;
-      }
-
-      .nav-sbx-logo {
-        height: 22px;
-        left: 8px;
-      }
+      nav .logo { height: clamp(30px, 8vw, 48px); }
     }
   </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZBCVNP"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
-  <h1 style="position: absolute; left: -9999px;">Superbid: Plataforma Inteligente de Venda de Ativos</h1>
-
-  <!-- Ticker da Bolsa de Valores -->
-  <div class="stock-ticker">
-    <div class="ticker-content">
-      <span class="ticker-item">📈 SUPERBID: Transformando ativos em liquidez</span>
-      <span class="ticker-item">🛒 Compre Já: Compra direta e segura</span>
-      <span class="ticker-item">🔨 Leilão: Melhores preços garantidos</span>
-      <span class="ticker-item">🤝 Mercado Balcão: Negociação flexível</span>
-      <span class="ticker-item">📋 Tomada de Preço: Processo transparente</span>
-      <span class="ticker-item">💰 Infraestrutura inteligente para suas vendas</span>
-      <span class="ticker-item">⚡ Agilidade e eficiência em cada transação</span>
-      <span class="ticker-item">🛡️ Segurança total em todas as operações</span>
-      <span class="ticker-item">📈 SUPERBID: Transformando ativos em liquidez</span>
-      <span class="ticker-item">🛒 Compre Já: Compra direta e segura</span>
-      <span class="ticker-item">🔨 Leilão: Melhores preços garantidos</span>
-      <span class="ticker-item">🤝 Mercado Balcão: Negociação flexível</span>
-      <span class="ticker-item">📋 Tomada de Preço: Processo transparente</span>
-      <span class="ticker-item">💰 Infraestrutura inteligente para suas vendas</span>
-      <span class="ticker-item">⚡ Agilidade e eficiência em cada transação</span>
-      <span class="ticker-item">🛡️ Segurança total em todas as operações</span>
-    </div>
-  </div>
-
-  <nav style="background: linear-gradient(90deg, #311b92, #4527a0); padding: 1em; position: fixed; top: 40px; width: 100%; z-index: 1000;">
-    <img src="Base de Layout/superbid-exchange-principal.png" alt="Superbid Exchange - Versão principal" class="nav-sbx-logo" />
-    <div class="nav-links" style="display: flex; align-items: center; justify-content: center; gap: 2rem;">
-      <a href="#compre-ja" style="color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.35); text-decoration: none;">Compre Já</a>
-      <a href="#leilao" style="color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.35); text-decoration: none;">Leilão</a>
-      <a href="#mercado-balcao" style="color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.35); text-decoration: none;">Mercado Balcão</a>
-      <a href="#tomada-de-preco" style="color: white; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.35); text-decoration: none;">Tomada de Preço</a>
-    </div>
+  <nav>
+    <img src="Base de Layout/superbid-exchange-principal.png" alt="Superbid Exchange" class="logo" />
+    <ul>
+      <li><a href="#personas">Para Você</a></li>
+      <li><a href="#modalidades">Modalidades</a></li>
+      <li><a href="#comparativo">Comparativo</a></li>
+      <li><a href="#lead-gen">Contato</a></li>
+    </ul>
   </nav>
 
-  <section id="apresentacao-superbid">
-    <div class="apresentacao-container">
-      <img src="Base de Layout/LOGO.png" alt="Logotipo da Superbid" class="logo-superbid" />
-      <h2 style="font-size: 1.35em; font-weight: bold; line-height: 1.6; color: #ffffff !important; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);">
-        <span style="color: orange;">A Superbid</span> é a <span style="color: #ffd54f;">infraestrutura inteligente</span> que transforma ativos em liquidez!
-      </h2>
+  <section id="hero">
+    <div class="container">
+      <h1>Superbid: Infraestrutura Inteligente para Transformar Ativos em Liquidez</h1>
+      <p>Descubra as modalidades de venda ideais para seu perfil e converta ativos em oportunidades de negócio com segurança e agilidade.</p>
+      <img src="https://images.unsplash.com/photo-1581093448793-4f9c0f5ccdd6?auto=format&fit=crop&w=1200&q=80"
+           alt="Destaque Superbid"
+           style="width:100%; max-width:800px; border-radius:12px; margin:1em auto; display:block;" />
+      <div class="actions">
+        <a href="#lead-gen" class="btn btn-primary">Quero Vender um Ativo</a>
+        <a href="#modalidades" class="btn btn-secondary">Quero Comprar Agora</a>
+      </div>
     </div>
   </section>
 
-  <section id="modalidades-explicacao">
-    <h2>Modalidades de Venda da Superbid</h2>
-    <div class="modalidade-grid">
-
-      <article class="modalidade-box">
-        <span>🛒</span>
-        <h3>Compre Já</h3>
-        <p><strong>1. Publicação do item:</strong> O vendedor lista o bem com preço fixo e condições definidas.</p>
-        <p><strong>2. Visualização pelo comprador:</strong> Interessados acessam o item diretamente na plataforma.</p>
-        <p><strong>3. Decisão de compra:</strong> O comprador opta por adquirir o bem sem negociação.</p>
-        <p><strong>4. Pagamento:</strong> Instruções automáticas são fornecidas. O pagamento deve ser feito dentro do prazo.</p>
-        <p><strong>5. Entrega:</strong> Após confirmação de pagamento, o bem é preparado e entregue ao comprador.</p>
-      </article>
-
-      <article class="modalidade-box">
-        <span>🔨</span>
-        <h3>Leilão</h3>
-        <p><strong>1. Abertura do leilão:</strong> Itens são divulgados com data e hora para início dos lances.</p>
-        <p><strong>2. Período de lances:</strong> Usuários disputam em tempo real com lances competitivos.</p>
-        <p><strong>3. Encerramento:</strong> O maior lance no fechamento é o vencedor.</p>
-        <p><strong>4. Pagamento:</strong> O arrematante recebe instruções e deve pagar em até 48h.</p>
-        <p><strong>5. Liberação do bem:</strong> Após o pagamento e envio de documentos, o item é liberado.</p>
-      </article>
-
-      <article class="modalidade-box">
-        <span>🤝</span>
-        <h3>Mercado Balcão</h3>
-        <p><strong>1. Publicação do bem:</strong> O item fica disponível para propostas.</p>
-        <p><strong>2. Propostas e contrapropostas:</strong> Compradores e vendedores podem negociar valores e condições.</p>
-        <p><strong>3. Aceite:</strong> Quando ambas as partes concordam, a negociação é fechada.</p>
-        <p><strong>4. Pagamento:</strong> É feito conforme acordado na plataforma.</p>
-        <p><strong>5. Transferência:</strong> O bem é entregue ou retirado conforme combinado.</p>
-      </article>
-
-      <article class="modalidade-box">
-        <span>📋</span>
-        <h3>Tomada de Preço</h3>
-        <p><strong>1. Lançamento do certame:</strong> Um edital define regras e prazos.</p>
-        <p><strong>2. Recebimento de propostas:</strong> Interessados enviam ofertas até a data limite.</p>
-        <p><strong>3. Abertura das propostas:</strong> Após o prazo, as propostas são analisadas.</p>
-        <p><strong>4. Classificação e decisão:</strong> A melhor proposta é aceita conforme critérios definidos.</p>
-        <p><strong>5. Negociação complementar:</strong> Pode haver negociação adicional via Mercado Balcão.</p>
-        <p><strong>6. Formalização:</strong> Envio de documentos, pagamento e entrega do bem.</p>
-      </article>
-
+  <section id="personas">
+    <div class="container">
+      <h2>Escolha seu Perfil</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Grandes Empresas Vendedoras</h3>
+          <p>Venda grandes volumes de ativos com suporte dedicado, compliance e alcance de compradores qualificados.</p>
+          <a href="#lead-gen" class="btn btn-primary">Falar com Especialista</a>
+        </div>
+        <div class="card">
+          <h3>Compradores Recorrentes</h3>
+          <p>Acesse ofertas personalizadas, recursos de busca avançada e finalize compras em um clique.</p>
+          <a href="#modalidades" class="btn btn-secondary">Ver Leilões</a>
+        </div>
+        <div class="card">
+          <h3>Compradores Iniciantes</h3>
+          <p>Aprenda como funciona cada modalidade com tutoriais e participe com segurança em sua primeira compra.</p>
+          <a href="#modalidades" class="btn btn-secondary">Saiba como Participar</a>
+        </div>
+        <div class="card">
+          <h3>Governo e Setor Público</h3>
+          <p>Conduza leilões legais e transparentes com suporte completo a exigências regulamentares.</p>
+          <a href="#lead-gen" class="btn btn-primary">Soluções para Governo</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="compre-ja">
-    <h2 class="section-title">Compre Já</h2>
-    <div class="timeline-wrapper">
-    <div class="timeline">
-      <div class="message-box" data-role="Comprador">
-        <span>🛒</span>
-        <h4>Confirmação de interesse</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Recebemos seu interesse no bem. Aguarde instruções para prosseguir com a compra direta."</p>
+  <section id="modalidades">
+    <div class="container">
+      <h2>Modalidades de Venda</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1581090700227-1e8b54a4e296?auto=format&fit=crop&w=800&q=60"
+               alt="Leilão"
+               class="card-img" />
+          <h3>Leilão</h3>
+          <ul>
+            <li>Competição aberta de lances</li>
+            <li>Maior lance ao final vence</li>
+            <li>Opcional: leilão público ou privado</li>
+          </ul>
+          <a href="/leiloes" class="btn btn-secondary">Participar de Leilões</a>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1565372954871-44c184a82c2c?auto=format&fit=crop&w=800&q=60"
+               alt="Tomada de Preço"
+               class="card-img" />
+          <h3>Tomada de Preço</h3>
+          <ul>
+            <li>Envio de proposta sigilosa</li>
+            <li>Maior oferta analisada e aprovada</li>
+            <li>Atualizações em tempo real via WhatsApp</li>
+          </ul>
+          <a href="/tomada-de-preco" class="btn btn-secondary">Fazer Proposta</a>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1581090700227-1e8b54a4e296?auto=format&fit=crop&w=800&q=60"
+               alt="Compre Já"
+               class="card-img" />
+          <h3>Compre Já</h3>
+          <ul>
+            <li>Compra imediata pelo valor fixo</li>
+            <li>Checkout simplificado em 1 clique</li>
+            <li>Segurança garantida pela plataforma</li>
+          </ul>
+          <a href="/compre-ja" class="btn btn-secondary">Comprar Agora</a>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1587502536263-7ab321a220b9?auto=format&fit=crop&w=800&q=60"
+               alt="Mercado Balcão"
+               class="card-img" />
+          <h3>Mercado Balcão</h3>
+          <ul>
+            <li>Envie oferta e negocie diretamente</li>
+            <li>Condições flexíveis entre comprador e vendedor</li>
+            <li>Processo transparente e rápido</li>
+          </ul>
+          <a href="/mercado-balcao" class="btn btn-secondary">Negociar Oferta</a>
+        </div>
       </div>
-      <div class="message-box" data-role="Comprador">
-        <span>💳</span>
-        <h4>Instrução de pagamento</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Para garantir a reserva do bem, realize o pagamento conforme instruções enviadas. O prazo é de até 48h."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>✅</span>
-        <h4>Confirmação de pagamento</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Pagamento confirmado! Iniciaremos o processo de transferência e emissão de documentos."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>📝</span>
-        <h4>Solicitação de dados</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Por favor, envie os dados completos para entrega: endereço, contato e informações necessárias para agendamento."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>📄</span>
-        <h4>Envio de documentos</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Envie os documentos necessários para emissão de nota fiscal e formalização da venda."</p>
-      </div>
-      <div class="message-box" data-role="Vendedor">
-        <span>🔍</span>
-        <h4>Validação documental</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"Estamos validando seus dados e documentos. Em breve, entraremos em contato para agendar a entrega."</p>
-      </div>
-      <div class="message-box" data-role="Ambos">
-        <span>📦</span>
-        <h4>Agendamento de entrega</h4>
-        <span class="role-label">Ambos</span>
-        <p>"Vamos agendar a entrega do bem. Informe sua disponibilidade para prosseguirmos."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>📬</span>
-        <h4>Confirmação de recebimento</h4>
-        <span class="role-label">Comprador</span>
-        <p>"O bem foi entregue conforme combinado. Confirme o recebimento para finalizar a transação."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>⭐</span>
-        <h4>Avaliação da experiência</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Como foi sua experiência de compra? Avalie nosso atendimento e nos ajude a melhorar sempre."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>🛠️</span>
-        <h4>Suporte pós-venda</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Precisa de ajuda ou suporte? Nossa equipe está pronta para atender você no pós-venda."</p>
-      </div>
-    </div>
     </div>
   </section>
 
-  <section id="leilao">
-    <h2 class="section-title">Leilão</h2>
-    <div class="timeline-wrapper">
-    <div class="timeline">
-      <div class="message-box" data-role="Vendedor">
-        <span>🛎️</span>
-        <h4>Abertura do leilão</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"O leilão foi aberto! Itens disponíveis para lances até o encerramento do certame."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>💬</span>
-        <h4>Período de lances</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Envie seu lance e acompanhe em tempo real. Dispute o bem desejado até o fim do leilão."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>🏆</span>
-        <h4>Arremate vencedor</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Parabéns! Seu lance foi o vencedor. Aguarde instruções para pagamento e formalização do arremate."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>💰</span>
-        <h4>Instrução de pagamento</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Realize o pagamento conforme instruções recebidas para garantir a aquisição do bem arrematado."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>✅</span>
-        <h4>Confirmação de pagamento</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Pagamento confirmado. Continue acompanhando para envio de documentos e liberação do bem."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>📄</span>
-        <h4>Envio de documentos</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Envie os documentos necessários para emissão de nota fiscal e liberação do bem."</p>
-      </div>
-      <div class="message-box" data-role="Vendedor">
-        <span>🔍</span>
-        <h4>Validação cadastral</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"Estamos validando seus dados e documentos para dar sequência à liberação do bem."</p>
-      </div>
-      <div class="message-box" data-role="Vendedor">
-        <span>📦</span>
-        <h4>Liberação do bem</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"O bem foi liberado para retirada ou entrega. Entre em contato para agendar."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>📬</span>
-        <h4>Confirmação de retirada</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Confirme o recebimento ou retirada do bem para encerrarmos a transação."</p>
-      </div>
-      <div class="message-box" data-role="Ambos">
-        <span>⭐</span>
-        <h4>Pós-venda e NPS</h4>
-        <span class="role-label">Ambos</span>
-        <p>"Avalie sua experiência no leilão. Conte com nosso suporte sempre que precisar!"</p>
-      </div>
-    </div>
+  <section id="comparativo">
+    <div class="container">
+      <h2>Qual Modalidade é Ideal para Você?</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Critério</th><th>Leilão</th><th>Tomada de Preço</th><th>Compre Já</th><th>Mercado Balcão</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Transparência</td><td>Pública</td><td>Sigilosa</td><td>Imediata</td><td>Privada</td></tr>
+          <tr><td>Velocidade</td><td>Prazo definido</td><td>Prazo definido</td><td>Imediata</td><td>Flexível</td></tr>
+          <tr><td>Negociação</td><td>Competitiva</td><td>Sem concorrência visível</td><td>Sem negociação</td><td>Negociação direta</td></tr>
+          <tr><td>Atualizações</td><td>Dashboard</td><td>WhatsApp</td><td>E-mail</td><td>E-mail/WhatsApp</td></tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <section id="mercado-balcao">
-    <h2 class="section-title">Mercado Balcão</h2>
-    <div class="timeline-wrapper">
-    <div class="timeline">
-      <div class="message-box" data-role="Vendedor">
-        <span>📢</span>
-        <h4>Publicação do bem</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"Seu bem foi publicado e está disponível para receber propostas de interessados."</p>
+  <section id="lead-gen">
+    <div class="container">
+      <h2>Fale com Nossa Equipe</h2>
+      <p>Preencha o formulário ou entre em contato direto pelo WhatsApp para soluções personalizadas.</p>
+      <div class="lead-gen">
+        <form action="/contato" method="post">
+          <input type="text" name="nome" placeholder="Seu nome completo" required />
+          <input type="email" name="email" placeholder="Seu e-mail" required />
+          <select name="perfil" required>
+            <option value="">Selecione seu perfil</option>
+            <option>Grande Empresa Vendedora</option>
+            <option>Comprador Recorrente</option>
+            <option>Comprador Iniciante</option>
+            <option>Governo</option>
+          </select>
+          <textarea name="mensagem" rows="4" placeholder="Como podemos ajudar?" required></textarea>
+          <button type="submit" class="btn btn-primary">Enviar Contato</button>
+        </form>
+        <p>Ou fale agora no WhatsApp:</p>
+        <a href="https://wa.me/5511987654321?text=Ol%C3%A1%20Superbid%2C%20gostaria%20de%20ajuda" target="_blank" class="btn btn-whatsapp">
+          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/whatsapp.svg" alt="WhatsApp" style="width:20px;vertical-align:middle;margin-right:8px;">
+          WhatsApp
+        </a>
       </div>
-      <div class="message-box" data-role="Comprador">
-        <span>✉️</span>
-        <h4>Proposta recebida</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Sua proposta foi enviada ao vendedor. Aguarde retorno para seguir com a negociação."</p>
-      </div>
-      <div class="message-box" data-role="Vendedor">
-        <span>🔄</span>
-        <h4>Contraproposta enviada</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"Você enviou uma contraproposta ao comprador. Aguarde resposta para continuar."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>🤝</span>
-        <h4>Aceite das condições</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Condições acordadas! Em breve, você receberá instruções para pagamento e formalização."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>💳</span>
-        <h4>Instrução de pagamento</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Realize o pagamento conforme instruções enviadas para garantir a reserva do bem."</p>
-      </div>
-      <div class="message-box" data-role="Vendedor">
-        <span>✅</span>
-        <h4>Pagamento confirmado</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"Pagamento recebido. Agora prossiga com o envio dos documentos para formalização."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>📄</span>
-        <h4>Envio de documentos</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Envie os dados e documentos necessários para finalizar a negociação."</p>
-      </div>
-      <div class="message-box" data-role="Vendedor">
-        <span>📦</span>
-        <h4>Liberação do bem</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"O bem está liberado para transferência. Entre em contato para combinar entrega ou retirada."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>📩</span>
-        <h4>Confirmação de recebimento</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Confirme o recebimento do bem para concluirmos o processo."</p>
-      </div>
-      <div class="message-box" data-role="Ambos">
-        <span>⭐</span>
-        <h4>Avaliação e pós-venda</h4>
-        <span class="role-label">Ambos</span>
-        <p>"Negociação concluída! Avalie sua experiência e conte com nosso suporte pós-venda."</p>
-      </div>
-    </div>
     </div>
   </section>
 
-  <section id="tomada-de-preco">
-    <h2 class="section-title">Tomada de Preço</h2>
-    <div class="timeline-wrapper">
-    <div class="timeline">
-      <div class="message-box" data-role="Vendedor">
-        <span>📋</span>
-        <h4>Publicação do edital</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"Edital publicado. Interessados podem consultar regras, prazos e condições do certame."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>✉️</span>
-        <h4>Recebimento de propostas</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Envie sua proposta até a data limite estipulada no edital."</p>
-      </div>
-      <div class="message-box" data-role="Vendedor">
-        <span>⏳</span>
-        <h4>Encerramento do prazo</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"Prazo encerrado. Propostas recebidas serão analisadas conforme critérios do edital."</p>
-      </div>
-      <div class="message-box" data-role="Vendedor">
-        <span>🔎</span>
-        <h4>Análise e julgamento</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"Estamos avaliando as propostas recebidas. O resultado será divulgado em breve."</p>
-      </div>
-      <div class="message-box" data-role="Vendedor">
-        <span>📢</span>
-        <h4>Resultado oficial</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"Resultado oficial publicado. Proponentes serão comunicados sobre o desfecho do certame."</p>
-      </div>
-      <div class="message-box" data-role="Ambos">
-        <span>🤝</span>
-        <h4>Possível negociação balcão</h4>
-        <span class="role-label">Ambos</span>
-        <p>"Negociação Mercado Balcão aberta para eventuais ajustes ou condições comerciais."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>📄</span>
-        <h4>Envio de documentos</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Envie os dados e documentos necessários para formalização da compra."</p>
-      </div>
-      <div class="message-box" data-role="Comprador">
-        <span>💳</span>
-        <h4>Instrução de pagamento</h4>
-        <span class="role-label">Comprador</span>
-        <p>"Realize o pagamento conforme orientações para garantir a liberação do bem."</p>
-      </div>
-      <div class="message-box" data-role="Vendedor">
-        <span>📦</span>
-        <h4>Liberação do bem</h4>
-        <span class="role-label">Vendedor</span>
-        <p>"O bem foi liberado para entrega após confirmação do pagamento e documentação."</p>
-      </div>
-      <div class="message-box" data-role="Ambos">
-        <span>🧾</span>
-        <h4>Conformidade final</h4>
-        <span class="role-label">Ambos</span>
-        <p>"Transação finalizada com toda a documentação e compliance em dia. Obrigado pela parceria!"</p>
-      </div>
-    </div>
-    </div>
-  </section>
+  <footer>
+    <p>© 2025 Superbid Exchange. Todos os direitos reservados.</p>
+    <p><a href="/quem-somos">Sobre a Superbid</a> | <a href="/contato">Fale Conosco</a> | <a href="/blog">Blog</a></p>
+  </footer>
 
 </body>
-  <footer style="background: #1a1a1a; color: white; text-align: center; padding: 2em 1em; font-size: 0.9em;">
-    <p>© 2025 Superbid Exchange. Todos os direitos reservados.</p>
-    <p><a href="https://www.superbid.net/quem-somos" style="color: #ff9800;">Sobre a Superbid</a> | 
-       <a href="https://www.superbid.net/contato" style="color: #ff9800;">Fale Conosco</a> | 
-       <a href="https://www.superbid.net/blog" style="color: #ff9800;">Blog</a></p>
-  </footer>
 </html>
