@@ -61,6 +61,17 @@
       border: none;
     }
     section { margin-bottom: 3em; }
+    /* Itens em destaque */
+    #itens { background: #fff; }
+    #itens h2 { text-align: center; margin-bottom: 0.5em; }
+    #itens p.sub { text-align: center; color: #666; margin-bottom: 1.5em; }
+    .itens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2em; }
+    .item-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+    .item-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
+    .item-body { padding: 0.9em 1em 1.1em; display: flex; flex-direction: column; gap: 0.6em; }
+    .item-title { font-weight: 700; color: #222; font-size: 1.05em; line-height: 1.3; }
+    .item-meta { color: #666; font-size: 0.92em; }
+    .item-actions { margin-top: 0.4em; }
     /* Hero */
     #hero {
       background: linear-gradient(90deg, #1e3c72, #2a5298);
@@ -130,6 +141,79 @@
       <div class="actions">
         <a href="#lead-gen" class="btn btn-primary">Quero Vender um Ativo</a>
         <a href="#modalidades" class="btn btn-secondary">Quero Comprar Agora</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="itens">
+    <div class="container">
+      <h2>Itens em destaque</h2>
+      <p class="sub">Seleção recente de oportunidades na Superbid</p>
+      <div class="itens-grid">
+        <div class="item-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=70" alt="Caminhão" />
+          <div class="item-body">
+            <div class="item-title">Caminhão Baú 3/4</div>
+            <div class="item-meta">Diesel • 2016 • 180.000 km</div>
+            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          </div>
+        </div>
+        <div class="item-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1593941707874-ef25b8b91373?auto=format&fit=crop&w=800&q=70" alt="Escavadeira" />
+          <div class="item-body">
+            <div class="item-title">Escavadeira Hidráulica 20T</div>
+            <div class="item-meta">Obras • 2014 • Revisada</div>
+            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          </div>
+        </div>
+        <div class="item-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?auto=format&fit=crop&w=800&q=70" alt="Automóvel" />
+          <div class="item-body">
+            <div class="item-title">Sedan Executivo 2.0</div>
+            <div class="item-meta">Flex • 2019 • 48.000 km</div>
+            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          </div>
+        </div>
+        <div class="item-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=70" alt="Linha industrial" />
+          <div class="item-body">
+            <div class="item-title">Linha de Produção Modular</div>
+            <div class="item-meta">Indústria • 2017 • Completa</div>
+            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          </div>
+        </div>
+        <div class="item-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=800&q=70" alt="Servidor" />
+          <div class="item-body">
+            <div class="item-title">Servidor Rack 2U</div>
+            <div class="item-meta">TI • Dual Xeon • 128 GB RAM</div>
+            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          </div>
+        </div>
+        <div class="item-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=70" alt="Ferramentas" />
+          <div class="item-body">
+            <div class="item-title">Kit Ferramentas Pneumáticas</div>
+            <div class="item-meta">Oficina • Semi-novo</div>
+            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          </div>
+        </div>
+        <div class="item-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=800&q=70" alt="Mobiliário" />
+          <div class="item-body">
+            <div class="item-title">Lote Mobiliário Escritório</div>
+            <div class="item-meta">Cadeiras • Mesas • Armários</div>
+            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          </div>
+        </div>
+        <div class="item-card">
+          <img loading="lazy" src="https://images.unsplash.com/photo-1581093588401-16ec4f6b7553?auto=format&fit=crop&w=800&q=70" alt="Gerador" />
+          <div class="item-body">
+            <div class="item-title">Gerador 150 kVA</div>
+            <div class="item-meta">Diesel • Silenciado • Pronto uso</div>
+            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
