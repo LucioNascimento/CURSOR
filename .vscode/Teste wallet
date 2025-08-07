@@ -1,0 +1,47 @@
+// src/forms/account/Update.js
+import React, { Component } from "react";
+import { FormSection, Row, Col } from "some-ui-library";
+
+class Update extends Component {
+  render() {
+    const { errors } = this.props;
+
+    return (
+      <form>
+        {/* Other form sections */}
+        {/* Removed contact section as per instructions */}
+        {/* Removed fields: fullName, nome_contato, telefone_comercial, email_comercial */}
+      </form>
+    );
+  }
+}
+
+export default Update;
+
+// src/utils/formsValidation.js
+export function updateValidation(values) {
+  const errors = {};
+
+  // Removed validations for fullName, nome_contato, telefone_comercial, email_comercial
+
+  return errors;
+}
+
+// src/data/forms/submitInfo.js
+const submitInfo = {
+  // Removed fullName, nome_contato, telefone_comercial, email_comercial from submission data
+};
+
+export default submitInfo;
+
+// src/utils/formValues.js
+const initialValues = {
+  // Removed fullName, nome_contato, telefone_comercial, email_comercial from initial values
+};
+
+export default initialValues;
+
+// src/data/validation/asyncUpdateValidation.js
+export async function asyncUpdateValidation(values) {
+  // Removed async validation related to fullName, nome_contato, telefone_comercial, email_comercial
+}

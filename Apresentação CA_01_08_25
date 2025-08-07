@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apresentação sbX AI-First</title>
+  <style>
+    :root {
+      --purple: #3A0CA3;
+      --orange: #F25C05;
+      --white: #FFFFFF;
+      --bg-dark: #1A1A1A;
+      --text-light: #F0F0F0;
+      --text-dark: #2B2B2B;
+      --shadow: rgba(58, 12, 163, 0.3);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--white);
+      color: var(--purple);
+      line-height: 1.5;
+    }
+    header {
+      position: fixed;
+      top: 1rem;
+      right: 2rem;
+      z-index: 1000;
+    }
+    header img {
+      max-width: 120px;
+      height: auto;
+      display: block;
+    }
+    main {
+      margin-top: 0;
+    }
+    section {
+      width: 100%;
+      max-width: 960px;
+      margin: 4rem auto;
+      padding: 2rem 1.5rem;
+      border-bottom: 2px solid var(--purple);
+      box-shadow: 0 4px 12px var(--shadow);
+      border-radius: 12px;
+      background-color: var(--white);
+      position: relative;
+    }
+    section:last-child {
+      border-bottom: none;
+      box-shadow: none;
+    }
+    h1, h2 {
+      margin: 0 0 1rem 0;
+      font-weight: 900;
+      color: var(--purple);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+    }
+    h2 {
+      font-size: 2.8rem;
+    }
+    p {
+      font-size: 1.25rem;
+      max-width: 720px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
+      color: var(--purple);
+    }
+    /* Slide 1 */
+    #slide1 {
+      position: relative;
+      margin: 0 auto 6rem auto;
+      padding: 0;
+      height: 600px;
+      max-width: 100vw;
+      border-radius: 0;
+      border: none;
+      box-shadow: none;
+      overflow: hidden;
+      background: url('img/slide1-bg.png') center center/cover no-repeat;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 0 0 15px rgba(0,0,0,0.7);
+    }
+    #slide1 h1 {
+      font-size: 5rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin: 0;
+      padding: 0 1rem;
+      max-width: 90vw;
+    }
+    #slide1 header {
+      position: fixed;
+      top: 1.5rem;
+      right: 2rem;
+      z-index: 1001;
+      background: transparent;
+      padding: 0;
+      margin: 0;
+    }
+    #slide1 header img {
+      max-width: 120px;
+      height: auto;
+      display: block;
+    }
+    /* Slide 2 */
+    #slide2 .subtitle {
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--orange);
+      text-align: center;
+    }
+    #slide2 .intro-text {
+      font-size: 1.2rem;
+      max-width: 720px;
+      margin: 0 auto 3rem auto;
+      color: var(--purple);
+      line-height: 1.5;
+    }
+    #slide2 .boxes {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto 2.5rem auto;
+      flex-wrap: wrap;
+    }
+    #slide2 .box {
+      background-color: var(--purple);
+      color: var(--white);
+      flex: 1 1 30%;
+      min-width: 220px;
+      padding: 1.8rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(58, 12, 163, 0.35);
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    #slide2 .box:hover {
+      background-color: var(--orange);
+      cursor: default;
+    }
+    #slide2 .highlight {
+      max-width: 720px;
+      margin: 3rem auto 0 auto;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--purple);
+      text-align: center;
+      line-height: 1.5;
+    }
+    #slide2 .highlight u {
+      text-decoration-color: var(--orange);
+      text-decoration-thickness: 3px;
+    }
+    /* Slides 3-5 */
+    .tribe-slide {
+      text-align: center;
+      max-width: 840px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .tribe-slide h2 {
+      margin-bottom: 2rem;
+      color: var(--purple);
+    }
+    .tribe-slide img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 2.5rem auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow);
+    }
+    /* Slide 6 */
+    #slide6 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
+    #slide6 .table-container {
+      flex: 1 1 520px;
+      overflow-x: auto;
+    }
+    #slide6 table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 1rem;
+      color: var(--purple);
+      box-shadow: 0 4px 12px var(--shadow);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    #slide6 th, #slide6 td {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--purple);
+      text-align: center;
+      font-weight: 600;
+    }
+    #slide6 th {
+      background-color: var(--purple);
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    #slide6 td {
+      background-color: #f9f7ff;
+    }
+    #slide6 img {
+      flex: 1 1 320px;
+      max-width: 320px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow);
+      user-select: none;
+    }
+    /* Slide 7 */
+    #slide7 ol {
+      max-width: 720px;
+      margin: 0 auto;
+      padding-left: 1.5rem;
+      font-size: 1.15rem;
+      color: var(--purple);
+      line-height: 1.4;
+      font-weight: 600;
+    }
+    #slide7 ol li {
+      margin-bottom: 0.8rem;
+    }
+    /* Slide 8,9,10 */
+    #slide8, #slide9, #slide10 {
+      text-align: center;
+    }
+    #slide8 h2, #slide9 h2, #slide10 h2 {
+      margin-bottom: 2rem;
+      color: var(--purple);
+    }
+    #slide8 img, #slide9 img, #slide10 img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow);
+      user-select: none;
+    }
+    /* Responsive */
+    @media (max-width: 768px) {
+      section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      #slide2 .boxes {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      #slide2 .box {
+        flex: none;
+        width: 100%;
+        margin: 0 auto;
+      }
+      #slide6 {
+        flex-direction: column;
+      }
+      #slide6 img {
+        max-width: 100%;
+        flex: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="img/logo-sbx.png" alt="Logo sbX" />
+  </header>
+  <main>
+    <section id="slide1" aria-label="Capa - Tecnologia">
+      <header>
+        <img src="img/logo-sbx.png" alt="Logo sbX" />
+      </header>
+      <h1>Tecnologia</h1>
+    </section>
+
+    <section id="slide2" aria-label="Stack AI-First da sbX">
+      <h2>🧠 A Stack AI-First da sbX</h2>
+      <p class="subtitle">Acelerando a Nova Era de Desenvolvimento Tech</p>
+      <p class="intro-text">
+        Construímos mais do que uma arquitetura tecnológica.<br/>
+        Estruturamos um ecossistema completo para promover uma cultura AI-First na prática —<br/>
+        transformando como desenvolvedores, líderes e times operacionais colaboram através de fluxos inteligentes e agentes autônomos.
+      </p>
+      <div class="boxes">
+        <div class="box" tabindex="0" aria-label="Camada de Interface">Camada de Interface</div>
+        <div class="box" tabindex="0" aria-label="Orquestração">Orquestração</div>
+        <div class="box" tabindex="0" aria-label="Camada Cognitiva">Camada Cognitiva</div>
+      </div>
+      <p class="highlight">
+        Esta stack é <strong>fundamental</strong> para a transformação digital, <u>capacitando equipes</u> e <u>automatizando processos</u> com inteligência artificial.
+      </p>
+    </section>
+
+    <section id="slide3" class="tribe-slide" aria-label="Evolução – Tribo Canais">
+      <h2>Evolução – Tribo Canais</h2>
+      <img src="img/slide3.png" alt="Gráfico de barras da Tribo Canais" />
+    </section>
+
+    <section id="slide4" class="tribe-slide" aria-label="Evolução – Tribo Wallet">
+      <h2>Evolução – Tribo Wallet</h2>
+      <img src="img/slide4.png" alt="Gráfico de barras da Tribo Wallet" />
+    </section>
+
+    <section id="slide5" class="tribe-slide" aria-label="Evolução – Tribo Terminal">
+      <h2>Evolução – Tribo Terminal</h2>
+      <img src="img/slide5.png" alt="Gráfico de barras da Tribo Terminal" />
+    </section>
+
+    <section id="slide6" aria-label="Ciclo de Vida dos Agentes">
+      <h2>Squad AI-First</h2>
+      <div id="slide6">
+        <div class="table-container" role="table" aria-label="Tabela do ciclo de vida dos agentes">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Agente</th>
+                <th scope="col">Descobrir Necessidade</th>
+                <th scope="col">Desenvolver</th>
+                <th scope="col">Implantar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Assistente de Leilões Judiciais</td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td>✔️</td>
+              </tr>
+              <tr>
+                <td>Agente de Alarmes de Desempenho</td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td>✔️</td>
+              </tr>
+              <tr>
+                <td>Atendimento Reclame Aqui</td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td>✔️</td>
+              </tr>
+              <tr>
+                <td>Geração automatizada de Briefings</td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td>✔️</td>
+              </tr>
+              <tr>
+                <td>Análise de Riscos Contratuais</td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td>✔️</td>
+              </tr>
+              <tr>
+                <td>Monitoramento de SLA</td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td>✔️</td>
+              </tr>
+              <tr>
+                <td>Otimização de Fluxos Operacionais</td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td>✔️</td>
+              </tr>
+              <tr>
+                <td>Previsão de Demanda</td>
+                <td>✔️</td>
+                <td>✔️</td>
+                <td>✔️</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <img src="img/slide6-sprint.png" alt="Imagem do sprint de 1 semana" />
+      </div>
+    </section>
+
+    <section id="slide7" aria-label="Roadmap de Agentes">
+      <h2>Roadmap de Agentes</h2>
+      <ol>
+        <li>Assistente de Leilões Judiciais</li>
+        <li>Agente de Alarmes de Desempenho</li>
+        <li>Atendimento Reclame Aqui</li>
+        <li>Geração automatizada de Briefings</li>
+        <li>Análise de Riscos Contratuais</li>
+        <li>Monitoramento de SLA</li>
+        <li>Otimização de Fluxos Operacionais</li>
+        <li>Previsão de Demanda</li>
+        <li>Agente de Análise Financeira</li>
+        <li>Automação de Relatórios</li>
+        <li>Assistente de Compliance</li>
+        <li>Monitor de Segurança</li>
+        <li>Gestão de Contratos</li>
+        <li>Chatbot de Suporte</li>
+        <li>Agente de Vendas</li>
+        <li>Automação de Marketing</li>
+        <li>Assistente de RH</li>
+        <li>Gerenciamento de Tickets</li>
+        <li>Análise de Dados</li>
+        <li>Previsão de Churn</li>
+        <li>Otimização de Custos</li>
+        <li>Assistente de Projetos</li>
+        <li>Automação de Processos</li>
+        <li>Monitoramento de Redes</li>
+        <li>Agente de Qualidade</li>
+        <li>Assistente de Treinamento</li>
+        <li>Relatórios Inteligentes</li>
+        <li>Gestão de Inventário</li>
+      </ol>
+    </section>
+
+    <section id="slide8" aria-label="Metodologia SbX">
+      <h2>Metodologia SbX</h2>
+      <img src="img/slide8.png" alt="Imagem do fluxograma completo da metodologia SbX" />
+    </section>
+
+    <section id="slide9" aria-label="Jornada Cross">
+      <h2>Jornada Cross</h2>
+      <img src="img/slide9.png" alt="Imagem da jornada de produção" />
+    </section>
+
+    <section id="slide10" aria-label="AI-First Development Cycle">
+      <h2>AI-First Development Cycle</h2>
+      <img src="img/slide10.png" alt="Infográfico do ciclo de desenvolvimento AI-First" />
+    </section>
+  </main>
+</body>
+</html>
