@@ -3,10 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mapa Visual de Mensageria WhatsApp por Modalidade</title>
+  <meta name="description" content="Explore as modalidades de venda da Superbid: Compre Já, Leilão, Mercado Balcão e Tomada de Preço. Uma plataforma segura e eficiente para transformar ativos em liquidez.">
+  <meta name="keywords" content="Superbid, Compre Já, Leilão, Mercado Balcão, Tomada de Preço, plataforma de vendas, ativos, liquidez, venda de bens, compradores, vendedores">
+  <meta name="author" content="Superbid Exchange">
+  <meta property="og:title" content="Superbid - Modalidades de Venda e Mensageria WhatsApp">
+  <meta property="og:description" content="Descubra como transformar ativos em liquidez com as soluções da Superbid: Leilões, Compras Diretas, Negociação Flexível e mais.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.superbid.net">
+  <meta property="og:image" content="https://www.superbid.net/images/og-superbid.jpg">
+  <meta name="robots" content="index, follow">
+  <title>Superbid | Quero Vender</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="Base de Layout/LOGO.png" />
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Barlow', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
       margin: 0;
       padding-top: 120px;
       background-color: #f5f5f5;
@@ -121,6 +134,22 @@
       /* For visual separation inside section */
       box-shadow: 0 2px 20px rgba(0,0,0,0.03);
       justify-content: center;
+      scroll-behavior: smooth;
+      animation: auto-scroll 40s linear infinite;
+    }
+
+    @keyframes auto-scroll {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    .timeline-wrapper {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
     }
     .timeline::-webkit-scrollbar {
       height: 8px;
@@ -227,6 +256,8 @@
         overflow-x: visible;
         gap: 2em;
         padding: 1.2em 0.5em 1.2em 0.5em;
+        animation: none !important;
+        transform: none !important;
       }
       .timeline .message-box {
         min-width: 0;
@@ -421,6 +452,8 @@
 </head>
 <body>
 
+  <h1 style="position: absolute; left: -9999px;">Superbid: Plataforma Inteligente de Venda de Ativos</h1>
+
   <!-- Ticker da Bolsa de Valores -->
   <div class="stock-ticker">
     <div class="ticker-content">
@@ -456,10 +489,9 @@
   <section id="apresentacao-superbid">
     <div class="apresentacao-container">
       <img src="Base de Layout/LOGO.png" alt="Logotipo da Superbid" class="logo-superbid" />
-      <p style="font-size: 1.35em; font-weight: bold; line-height: 1.6;">
-        <span style="color: orange;">A Superbid</span> é a <span style="color: #4a148c;">infraestrutura inteligente</span> que transforma ativos em liquidez! <br />
-        Somos especialistas em conectar empresas e pessoas com <span style="color: #4a148c;">compradores reais</span>, unindo <span style="color: orange;">leilões</span>, <span style="color: orange;">vendas diretas</span> e <span style="color: orange;">negociações estratégicas</span> — tudo em um só lugar, com <span style="color: #4a148c;">segurança</span>, <span style="color: #4a148c;">agilidade</span> e <span style="color: #4a148c;">eficiência</span>.
-      </p>
+      <h2 style="font-size: 1.35em; font-weight: bold; line-height: 1.6; color: #ffffff !important; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);">
+        <span style="color: orange;">A Superbid</span> é a <span style="color: #ffd54f;">infraestrutura inteligente</span> que transforma ativos em liquidez!
+      </h2>
     </div>
   </section>
 
@@ -513,6 +545,7 @@
 
   <section id="compre-ja">
     <h2 class="section-title">Compre Já</h2>
+    <div class="timeline-wrapper">
     <div class="timeline">
       <div class="message-box" data-role="Comprador">
         <span>🛒</span>
@@ -575,10 +608,12 @@
         <p>"Precisa de ajuda ou suporte? Nossa equipe está pronta para atender você no pós-venda."</p>
       </div>
     </div>
+    </div>
   </section>
 
   <section id="leilao">
     <h2 class="section-title">Leilão</h2>
+    <div class="timeline-wrapper">
     <div class="timeline">
       <div class="message-box" data-role="Vendedor">
         <span>🛎️</span>
@@ -641,10 +676,12 @@
         <p>"Avalie sua experiência no leilão. Conte com nosso suporte sempre que precisar!"</p>
       </div>
     </div>
+    </div>
   </section>
 
   <section id="mercado-balcao">
     <h2 class="section-title">Mercado Balcão</h2>
+    <div class="timeline-wrapper">
     <div class="timeline">
       <div class="message-box" data-role="Vendedor">
         <span>📢</span>
@@ -707,10 +744,12 @@
         <p>"Negociação concluída! Avalie sua experiência e conte com nosso suporte pós-venda."</p>
       </div>
     </div>
+    </div>
   </section>
 
   <section id="tomada-de-preco">
     <h2 class="section-title">Tomada de Preço</h2>
+    <div class="timeline-wrapper">
     <div class="timeline">
       <div class="message-box" data-role="Vendedor">
         <span>📋</span>
@@ -773,7 +812,14 @@
         <p>"Transação finalizada com toda a documentação e compliance em dia. Obrigado pela parceria!"</p>
       </div>
     </div>
+    </div>
   </section>
 
 </body>
+  <footer style="background: #1a1a1a; color: white; text-align: center; padding: 2em 1em; font-size: 0.9em;">
+    <p>© 2025 Superbid Exchange. Todos os direitos reservados.</p>
+    <p><a href="https://www.superbid.net/quem-somos" style="color: #ff9800;">Sobre a Superbid</a> | 
+       <a href="https://www.superbid.net/contato" style="color: #ff9800;">Fale Conosco</a> | 
+       <a href="https://www.superbid.net/blog" style="color: #ff9800;">Blog</a></p>
+  </footer>
 </html>
