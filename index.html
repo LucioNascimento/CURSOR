@@ -1,448 +1,937 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Superbid - Infraestrutura inteligente para transformar ativos em liquidez. Modalidades de venda, educação, geração de leads e contato via WhatsApp." />
-  <meta name="keywords" content="Superbid, leilão, compra direta, mercado balcão, tomada de preço, lead generation, WhatsApp" />
-  <meta name="author" content="Superbid Exchange" />
-  <title>Superbid | Infraestrutura Inteligente de Venda de Ativos</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    /* Reset e base */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Barlow', sans-serif; color: #333; background: #f5f5f5; line-height: 1.6; }
-    a { color: #007bff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    h1, h2, h3 { color: #222; margin-bottom: 0.5em; }
-    nav {
-      background: #311b92;
-      padding: 0.6em 1em;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    nav .logo {
-      height: clamp(36px, 6vw, 64px);
-      width: auto;
-      vertical-align: middle;
-    }
-    nav ul { list-style: none; display: flex; gap: 1.5em; justify-content: flex-end; align-items: center; margin: 0; }
-    nav li { display: inline; }
-    nav a { color: #fff; font-weight: 600; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 2em 1em; }
-    .btn { 
-      display: inline-block; 
-      padding: 0.8em 1.5em; 
-      border-radius: 8px; 
-      font-weight: 600; 
-      text-align: center;
-      transition: background 0.2s, box-shadow 0.2s;
-      box-shadow: 0 2px 8px rgba(50,50,50,0.04);
-    }
-    .btn-primary { 
-      background: #2e7d32; 
-      color: #fff;
-      border: none;
-    }
-    .btn-secondary { 
-      background: #1565c0; 
-      color: #fff;
-      border: none;
-    }
-    .btn-whatsapp { 
-      background: #20ba5a; 
-      color: #fff;
-      border: none;
-    }
-    section { margin-bottom: 3em; }
-    /* Itens em destaque */
-    #itens { background: #fff; }
-    #itens h2 { text-align: center; margin-bottom: 0.5em; }
-    #itens p.sub { text-align: center; color: #666; margin-bottom: 1.5em; }
-    .itens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2em; }
-    .item-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
-    .item-card img { width: 100%; height: 180px; object-fit: cover; display: block; }
-    .item-illustration { height: 180px; display: flex; align-items: center; justify-content: center; }
-    .item-illustration svg { width: 70%; height: auto; max-height: 150px; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.08)); }
-    .type-truck { background: linear-gradient(135deg, #e3f2fd, #bbdefb); }
-    .type-excavator { background: linear-gradient(135deg, #fff3e0, #ffe0b2); }
-    .type-sedan { background: linear-gradient(135deg, #ede7f6, #d1c4e9); }
-    .type-factory { background: linear-gradient(135deg, #eceff1, #cfd8dc); }
-    .type-server { background: linear-gradient(135deg, #e0f2f1, #b2dfdb); }
-    .type-tools { background: linear-gradient(135deg, #fff8e1, #ffecb3); }
-    .type-office { background: linear-gradient(135deg, #fce4ec, #f8bbd0); }
-    .type-generator { background: linear-gradient(135deg, #ffebee, #ffcdd2); }
-    .item-body { padding: 0.9em 1em 1.1em; display: flex; flex-direction: column; gap: 0.6em; }
-    .item-title { font-weight: 700; color: #222; font-size: 1.05em; line-height: 1.3; }
-    .item-meta { color: #666; font-size: 0.92em; }
-    .item-actions { margin-top: 0.4em; }
-    /* Hero */
-    #hero {
-      background: 
-        linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.08)),
-        linear-gradient(135deg, #3f51b5, #64b5f6);
-      color: #fff;
-      text-align: center;
-      padding: 4em 1em;
-    }
-    .hero-logo {
-      display: block;
-      margin: 0 auto 1rem auto;
-      width: clamp(126px, 21vw, 224px);
-      height: auto;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25));
-    }
-    #hero h1 { font-size: 2.5em; margin-bottom: 0.5em; color: #ffffff !important; text-shadow: 0 2px 6px rgba(0,0,0,0.35); font-weight: 800; }
-    #hero p { font-size: 1.2em; margin-bottom: 1.5em; color: #e6eefc; text-shadow: 0 1px 3px rgba(0,0,0,0.3); }
-    #hero .actions { display: flex; gap: 1em; flex-wrap: wrap; justify-content: center; }
-    /* Personas */
-    #personas { text-align: center; }
-    #personas .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1.5em; margin-top: 2em; }
-    #personas .card { background: #fff; padding: 1.5em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    #personas .card h3 { margin-bottom: 0.5em; }
-    #personas .card p { margin-bottom: 1em; font-size: 0.95em; }
-    /* Modalidades */
-    #modalidades h2 { text-align: center; margin-bottom: 1em; }
-    #modalidades .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.5em; }
-    #modalidades .card { background: #fff; padding: 1.5em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    #modalidades .card h3 { margin-bottom: 0.5em; }
-    #modalidades .card ul { margin-left: 1em; list-style: disc; margin-bottom: 1em; }
-    /* Comparativo */
-    #comparativo table { width: 100%; border-collapse: collapse; margin-top: 1em; }
-    #comparativo th, #comparativo td { border: 1px solid #ddd; padding: 0.8em; text-align: center; }
-    #comparativo th { background: #512da8; color: #fff; }
-    /* Lead gen */
-    #lead-gen { background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); text-align: center; }
-    #lead-gen form { display: flex; flex-direction: column; gap: 1em; max-width: 400px; margin: 0 auto; }
-    #lead-gen input, #lead-gen select { padding: 0.8em; border: 1px solid #ccc; border-radius: 4px; }
-    /* Footer */
-    footer { background: #1a1a1a; color: #fff; text-align: center; padding: 2em 1em; font-size: 0.9em; }
-    footer a { color: #ffd54f; }
-    /* Card image for modalidades */
-    .card-img {
-      width: 100%;
-      height: auto;
-      border-radius: 4px;
-      margin-bottom: 1em;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Superbid - Infraestrutura inteligente para transformar ativos em liquidez. Modalidades de venda, educação, geração de leads e contato via WhatsApp."
+    />
+    <meta
+      name="keywords"
+      content="Superbid, leilão, compra direta, mercado balcão, tomada de preço, lead generation, WhatsApp"
+    />
+    <meta name="author" content="Superbid Exchange" />
+    <title>Superbid | Infraestrutura Inteligente de Venda de Ativos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset e base */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: "Barlow", sans-serif;
+        color: #333;
+        background: #eef1f7;
+        line-height: 1.6;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #222;
+        margin-bottom: 0.5em;
+      }
+      nav {
+        background: linear-gradient(90deg, #4527a0, #311b92);
+        padding: 0.6em 1em;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      nav .logo {
+        height: clamp(36px, 6vw, 64px);
+        width: auto;
+        vertical-align: middle;
+      }
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1.5em;
+        justify-content: flex-end;
+        align-items: center;
+        margin: 0;
+      }
+      nav li {
+        display: inline;
+      }
+      nav a {
+        color: #fff;
+        font-weight: 600;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2em 1em;
+      }
+      .btn {
+        display: inline-block;
+        padding: 0.8em 1.5em;
+        border-radius: 8px;
+        font-weight: 600;
+        text-align: center;
+        transition:
+          background 0.2s,
+          box-shadow 0.2s;
+        box-shadow: 0 2px 8px rgba(50, 50, 50, 0.04);
+      }
+      .btn:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+      .btn-primary {
+        background: #ff9800;
+        color: #fff;
+        border: none;
+      }
+      .btn-secondary {
+        background: #0288d1;
+        color: #fff;
+        border: none;
+      }
+      .btn-whatsapp {
+        background: #25d366;
+        color: #fff;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5em;
+      }
+      .btn-whatsapp img {
+        width: 20px;
+        height: 20px;
+      }
+      section {
+        margin-bottom: 3em;
+      }
+      /* Itens em destaque */
+      #itens {
+        background: #fff;
+      }
+      #itens h2 {
+        text-align: center;
+        margin-bottom: 0.5em;
+      }
+      #itens p.sub {
+        text-align: center;
+        color: #666;
+        margin-bottom: 1.5em;
+      }
+      .itens-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.2em;
+      }
+      .item-card {
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+      }
+      .item-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+      .item-illustration {
+        height: 180px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .item-illustration svg {
+        width: 70%;
+        height: auto;
+        max-height: 150px;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+      }
+      .type-truck {
+        background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      }
+      .type-excavator {
+        background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      }
+      .type-sedan {
+        background: linear-gradient(135deg, #ede7f6, #d1c4e9);
+      }
+      .type-factory {
+        background: linear-gradient(135deg, #eceff1, #cfd8dc);
+      }
+      .type-server {
+        background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+      }
+      .type-tools {
+        background: linear-gradient(135deg, #fff8e1, #ffecb3);
+      }
+      .type-office {
+        background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+      }
+      .type-generator {
+        background: linear-gradient(135deg, #ffebee, #ffcdd2);
+      }
+      .item-body {
+        padding: 0.9em 1em 1.1em;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6em;
+      }
+      .item-title {
+        font-weight: 700;
+        color: #222;
+        font-size: 1.05em;
+        line-height: 1.3;
+      }
+      .item-meta {
+        color: #666;
+        font-size: 0.92em;
+      }
+      .item-actions {
+        margin-top: 0.4em;
+      }
+      /* Hero */
+      #hero {
+        background:
+          linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.08),
+            rgba(255, 255, 255, 0.08)
+          ),
+          linear-gradient(135deg, #3949ab, #4fc3f7);
+        color: #fff;
+        text-align: center;
+        padding: 4em 1em;
+      }
+      .hero-logo {
+        display: block;
+        margin: 0 auto 1rem auto;
+        width: clamp(126px, 21vw, 224px);
+        height: auto;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+      }
+      #hero h1 {
+        font-size: 2.5em;
+        margin-bottom: 0.5em;
+        color: #ffffff !important;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+        font-weight: 800;
+      }
+      #hero p {
+        font-size: 1.2em;
+        margin-bottom: 1.5em;
+        color: #e6eefc;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
+      #hero .actions {
+        display: flex;
+        gap: 1em;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      /* Personas */
+      #personas {
+        text-align: center;
+      }
+      #personas .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5em;
+        margin-top: 2em;
+      }
+      #personas .card {
+        background: #fff;
+        padding: 1.5em;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      #personas .card h3 {
+        margin-bottom: 0.5em;
+      }
+      #personas .card p {
+        margin-bottom: 1em;
+        font-size: 0.95em;
+      }
+      /* Modalidades */
+      #modalidades h2 {
+        text-align: center;
+        margin-bottom: 1em;
+      }
+      #modalidades .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5em;
+      }
+      #modalidades .card {
+        background: #fff;
+        padding: 1.5em;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      #modalidades .card h3 {
+        margin-bottom: 0.5em;
+      }
+      #modalidades .card ul {
+        margin-left: 1em;
+        list-style: disc;
+        margin-bottom: 1em;
+      }
+      /* Comparativo */
+      #comparativo table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1em;
+      }
+      #comparativo th,
+      #comparativo td {
+        border: 1px solid #ddd;
+        padding: 0.8em;
+        text-align: center;
+      }
+      #comparativo th {
+        background: #512da8;
+        color: #fff;
+      }
+      /* Lead gen */
+      #lead-gen {
+        background: #fff;
+        padding: 2em;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+      #lead-gen form {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      #lead-gen input,
+      #lead-gen select {
+        padding: 0.8em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      /* Footer */
+      footer {
+        background: #1a1a1a;
+        color: #fff;
+        text-align: center;
+        padding: 2em 1em;
+        font-size: 0.9em;
+      }
+      footer a {
+        color: #ffd54f;
+      }
+      /* Card image for modalidades */
+      .card-img {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        margin-bottom: 1em;
+      }
 
-    /* Responsivo: ajusta logo em telas pequenas */
-    @media (max-width: 600px) {
-      nav .logo { height: clamp(30px, 8vw, 48px); }
-    }
-  </style>
-</head>
-<body>
+      /* Responsivo: ajusta logo em telas pequenas */
+      @media (max-width: 600px) {
+        nav .logo {
+          height: clamp(30px, 8vw, 48px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <img
+        src="Base de Layout/superbid-exchange-principal.png"
+        alt="Superbid Exchange"
+        class="logo"
+      />
+      <ul>
+        <li><a href="#personas">Para Você</a></li>
+        <li><a href="#modalidades">Modalidades</a></li>
+        <li><a href="#comparativo">Comparativo</a></li>
+        <li><a href="#lead-gen">Contato</a></li>
+      </ul>
+    </nav>
 
-  <nav>
-    <img src="Base de Layout/superbid-exchange-principal.png" alt="Superbid Exchange" class="logo" />
-    <ul>
-      <li><a href="#personas">Para Você</a></li>
-      <li><a href="#modalidades">Modalidades</a></li>
-      <li><a href="#comparativo">Comparativo</a></li>
-      <li><a href="#lead-gen">Contato</a></li>
-    </ul>
-  </nav>
-
-  <section id="hero">
-    <div class="container">
-      <img src="Base de Layout/LOGO.png" alt="Superbid" class="hero-logo" />
-      <h1>Superbid: Infraestrutura Inteligente para Transformar Ativos em Liquidez</h1>
-      <p>Descubra as modalidades de venda ideais para seu perfil e converta ativos em oportunidades de negócio com segurança e agilidade.</p>
-      <img src="https://images.unsplash.com/photo-1581093448793-4f9c0f5ccdd6?auto=format&fit=crop&w=1200&q=80"
-           alt="Destaque Superbid"
-           style="width:100%; max-width:800px; border-radius:12px; margin:1em auto; display:block;" />
-      <div class="actions">
-        <a href="#lead-gen" class="btn btn-primary">Quero Vender um Ativo</a>
-        <a href="#modalidades" class="btn btn-secondary">Quero Comprar Agora</a>
+    <section id="hero">
+      <div class="container">
+        <img src="Base de Layout/LOGO.png" alt="Superbid" class="hero-logo" />
+        <h1>
+          Superbid: Infraestrutura Inteligente para Transformar Ativos em
+          Liquidez
+        </h1>
+        <p>
+          Descubra as modalidades de venda ideais para seu perfil e converta
+          ativos em oportunidades de negócio com segurança e agilidade.
+        </p>
+        <img
+          src="https://images.unsplash.com/photo-1581093448793-4f9c0f5ccdd6?auto=format&fit=crop&w=1200&q=80"
+          alt="Destaque Superbid"
+          style="
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            margin: 1em auto;
+            display: block;
+          "
+        />
+        <div class="actions">
+          <a href="#lead-gen" class="btn btn-primary">Quero Vender um Ativo</a>
+          <a href="#modalidades" class="btn btn-secondary"
+            >Quero Comprar Agora</a
+          >
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="itens">
-    <div class="container">
-      <h2>Itens em destaque</h2>
-      <p class="sub">Seleção recente de oportunidades na Superbid</p>
-      <div class="itens-grid">
-        <div class="item-card">
-          <div class="item-illustration type-truck" role="img" aria-label="Ilustração de caminhão baú">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="8" y="32" width="62" height="26" rx="4" fill="#1565c0"/>
-              <rect x="70" y="40" width="30" height="18" rx="3" fill="#1976d2"/>
-              <rect x="80" y="34" width="12" height="10" rx="2" fill="#90caf9"/>
-              <circle cx="28" cy="62" r="8" fill="#263238"/>
-              <circle cx="28" cy="62" r="4" fill="#90a4ae"/>
-              <circle cx="75" cy="62" r="8" fill="#263238"/>
-              <circle cx="75" cy="62" r="4" fill="#90a4ae"/>
-            </svg>
+    <section id="itens">
+      <div class="container">
+        <h2>Itens em destaque</h2>
+        <p class="sub">Seleção recente de oportunidades na Superbid</p>
+        <div class="itens-grid">
+          <div class="item-card">
+            <div
+              class="item-illustration type-truck"
+              role="img"
+              aria-label="Ilustração de caminhão baú"
+            >
+              <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                <rect
+                  x="8"
+                  y="32"
+                  width="62"
+                  height="26"
+                  rx="4"
+                  fill="#1565c0"
+                />
+                <rect
+                  x="70"
+                  y="40"
+                  width="30"
+                  height="18"
+                  rx="3"
+                  fill="#1976d2"
+                />
+                <rect
+                  x="80"
+                  y="34"
+                  width="12"
+                  height="10"
+                  rx="2"
+                  fill="#90caf9"
+                />
+                <circle cx="28" cy="62" r="8" fill="#263238" />
+                <circle cx="28" cy="62" r="4" fill="#90a4ae" />
+                <circle cx="75" cy="62" r="8" fill="#263238" />
+                <circle cx="75" cy="62" r="4" fill="#90a4ae" />
+              </svg>
+            </div>
+            <div class="item-body">
+              <div class="item-title">Caminhão Baú 3/4</div>
+              <div class="item-meta">Diesel • 2016 • 180.000 km</div>
+              <div class="item-actions">
+                <a href="#" class="btn btn-secondary">Ver detalhes</a>
+              </div>
+            </div>
           </div>
-          <div class="item-body">
-            <div class="item-title">Caminhão Baú 3/4</div>
-            <div class="item-meta">Diesel • 2016 • 180.000 km</div>
-            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          <div class="item-card">
+            <div
+              class="item-illustration type-excavator"
+              role="img"
+              aria-label="Ilustração de escavadeira"
+            >
+              <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                <rect
+                  x="16"
+                  y="52"
+                  width="42"
+                  height="10"
+                  rx="5"
+                  fill="#8d6e63"
+                />
+                <rect
+                  x="12"
+                  y="58"
+                  width="50"
+                  height="8"
+                  rx="4"
+                  fill="#6d4c41"
+                />
+                <rect
+                  x="46"
+                  y="36"
+                  width="18"
+                  height="12"
+                  rx="2"
+                  fill="#ffa000"
+                />
+                <rect
+                  x="49"
+                  y="38"
+                  width="10"
+                  height="7"
+                  rx="1"
+                  fill="#fff8e1"
+                />
+                <path
+                  d="M64 40 L88 28 L102 40"
+                  stroke="#fb8c00"
+                  stroke-width="6"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+                <path d="M100 40 L110 46 L100 46 Z" fill="#ef6c00" />
+                <circle cx="28" cy="64" r="6" fill="#263238" />
+                <circle cx="50" cy="64" r="6" fill="#263238" />
+              </svg>
+            </div>
+            <div class="item-body">
+              <div class="item-title">Escavadeira Hidráulica 20T</div>
+              <div class="item-meta">Obras • 2014 • Revisada</div>
+              <div class="item-actions">
+                <a href="#" class="btn btn-secondary">Ver detalhes</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="item-card">
-          <div class="item-illustration type-excavator" role="img" aria-label="Ilustração de escavadeira">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="16" y="52" width="42" height="10" rx="5" fill="#8d6e63"/>
-              <rect x="12" y="58" width="50" height="8" rx="4" fill="#6d4c41"/>
-              <rect x="46" y="36" width="18" height="12" rx="2" fill="#ffa000"/>
-              <rect x="49" y="38" width="10" height="7" rx="1" fill="#fff8e1"/>
-              <path d="M64 40 L88 28 L102 40" stroke="#fb8c00" stroke-width="6" fill="none" stroke-linecap="round"/>
-              <path d="M100 40 L110 46 L100 46 Z" fill="#ef6c00"/>
-              <circle cx="28" cy="64" r="6" fill="#263238"/>
-              <circle cx="50" cy="64" r="6" fill="#263238"/>
-            </svg>
+          <div class="item-card">
+            <div
+              class="item-illustration type-sedan"
+              role="img"
+              aria-label="Ilustração de sedan executivo"
+            >
+              <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                <rect
+                  x="16"
+                  y="46"
+                  width="88"
+                  height="14"
+                  rx="8"
+                  fill="#7e57c2"
+                />
+                <polygon points="32,46 52,36 86,36 96,46" fill="#9575cd" />
+                <rect x="38" y="38" width="14" height="6" fill="#e1bee7" />
+                <rect x="56" y="38" width="14" height="6" fill="#e1bee7" />
+                <circle cx="36" cy="62" r="7" fill="#263238" />
+                <circle cx="84" cy="62" r="7" fill="#263238" />
+              </svg>
+            </div>
+            <div class="item-body">
+              <div class="item-title">Sedan Executivo 2.0</div>
+              <div class="item-meta">Flex • 2019 • 48.000 km</div>
+              <div class="item-actions">
+                <a href="#" class="btn btn-secondary">Ver detalhes</a>
+              </div>
+            </div>
           </div>
-          <div class="item-body">
-            <div class="item-title">Escavadeira Hidráulica 20T</div>
-            <div class="item-meta">Obras • 2014 • Revisada</div>
-            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          <div class="item-card">
+            <div
+              class="item-illustration type-factory"
+              role="img"
+              aria-label="Ilustração de fábrica"
+            >
+              <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                <rect x="12" y="44" width="30" height="24" fill="#90a4ae" />
+                <rect x="46" y="38" width="30" height="30" fill="#78909c" />
+                <rect x="80" y="28" width="12" height="40" fill="#607d8b" />
+                <circle cx="86" cy="20" r="4" fill="#cfd8dc" />
+                <circle cx="92" cy="14" r="6" fill="#cfd8dc" />
+                <rect x="18" y="50" width="6" height="6" fill="#eceff1" />
+                <rect x="26" y="50" width="6" height="6" fill="#eceff1" />
+                <rect x="18" y="58" width="6" height="6" fill="#eceff1" />
+                <rect x="26" y="58" width="6" height="6" fill="#eceff1" />
+              </svg>
+            </div>
+            <div class="item-body">
+              <div class="item-title">Linha de Produção Modular</div>
+              <div class="item-meta">Indústria • 2017 • Completa</div>
+              <div class="item-actions">
+                <a href="#" class="btn btn-secondary">Ver detalhes</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="item-card">
-          <div class="item-illustration type-sedan" role="img" aria-label="Ilustração de sedan executivo">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="16" y="46" width="88" height="14" rx="8" fill="#7e57c2"/>
-              <polygon points="32,46 52,36 86,36 96,46" fill="#9575cd"/>
-              <rect x="38" y="38" width="14" height="6" fill="#e1bee7"/>
-              <rect x="56" y="38" width="14" height="6" fill="#e1bee7"/>
-              <circle cx="36" cy="62" r="7" fill="#263238"/>
-              <circle cx="84" cy="62" r="7" fill="#263238"/>
-            </svg>
+          <div class="item-card">
+            <div
+              class="item-illustration type-server"
+              role="img"
+              aria-label="Ilustração de servidor"
+            >
+              <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                <rect
+                  x="28"
+                  y="24"
+                  width="64"
+                  height="48"
+                  rx="6"
+                  fill="#26a69a"
+                />
+                <rect x="36" y="32" width="48" height="4" fill="#80cbc4" />
+                <rect x="36" y="40" width="48" height="4" fill="#80cbc4" />
+                <rect x="36" y="48" width="48" height="4" fill="#80cbc4" />
+                <rect x="36" y="56" width="32" height="4" fill="#80cbc4" />
+              </svg>
+            </div>
+            <div class="item-body">
+              <div class="item-title">Servidor Rack 2U</div>
+              <div class="item-meta">TI • Dual Xeon • 128 GB RAM</div>
+              <div class="item-actions">
+                <a href="#" class="btn btn-secondary">Ver detalhes</a>
+              </div>
+            </div>
           </div>
-          <div class="item-body">
-            <div class="item-title">Sedan Executivo 2.0</div>
-            <div class="item-meta">Flex • 2019 • 48.000 km</div>
-            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          <div class="item-card">
+            <div
+              class="item-illustration type-tools"
+              role="img"
+              aria-label="Ilustração de ferramentas"
+            >
+              <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                <rect
+                  x="30"
+                  y="30"
+                  width="10"
+                  height="28"
+                  rx="2"
+                  fill="#fbc02d"
+                />
+                <rect
+                  x="28"
+                  y="26"
+                  width="14"
+                  height="6"
+                  rx="2"
+                  fill="#fdd835"
+                />
+                <path d="M74 26 l10 10 l-6 6 l-10 -10 z" fill="#ffa000" />
+                <rect
+                  x="60"
+                  y="40"
+                  width="26"
+                  height="6"
+                  rx="3"
+                  fill="#ffca28"
+                />
+              </svg>
+            </div>
+            <div class="item-body">
+              <div class="item-title">Kit Ferramentas Pneumáticas</div>
+              <div class="item-meta">Oficina • Semi-novo</div>
+              <div class="item-actions">
+                <a href="#" class="btn btn-secondary">Ver detalhes</a>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="item-card">
-          <div class="item-illustration type-factory" role="img" aria-label="Ilustração de fábrica">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="12" y="44" width="30" height="24" fill="#90a4ae"/>
-              <rect x="46" y="38" width="30" height="30" fill="#78909c"/>
-              <rect x="80" y="28" width="12" height="40" fill="#607d8b"/>
-              <circle cx="86" cy="20" r="4" fill="#cfd8dc"/>
-              <circle cx="92" cy="14" r="6" fill="#cfd8dc"/>
-              <rect x="18" y="50" width="6" height="6" fill="#eceff1"/>
-              <rect x="26" y="50" width="6" height="6" fill="#eceff1"/>
-              <rect x="18" y="58" width="6" height="6" fill="#eceff1"/>
-              <rect x="26" y="58" width="6" height="6" fill="#eceff1"/>
-            </svg>
+          <div class="item-card">
+            <div
+              class="item-illustration type-office"
+              role="img"
+              aria-label="Ilustração de mobiliário de escritório"
+            >
+              <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                <rect
+                  x="54"
+                  y="26"
+                  width="12"
+                  height="16"
+                  rx="2"
+                  fill="#f48fb1"
+                />
+                <rect
+                  x="48"
+                  y="42"
+                  width="24"
+                  height="12"
+                  rx="2"
+                  fill="#f06292"
+                />
+                <rect x="58" y="54" width="4" height="10" fill="#ad1457" />
+                <rect x="46" y="64" width="28" height="4" fill="#ad1457" />
+              </svg>
+            </div>
+            <div class="item-body">
+              <div class="item-title">Lote Mobiliário Escritório</div>
+              <div class="item-meta">Cadeiras • Mesas • Armários</div>
+              <div class="item-actions">
+                <a href="#" class="btn btn-secondary">Ver detalhes</a>
+              </div>
+            </div>
           </div>
-          <div class="item-body">
-            <div class="item-title">Linha de Produção Modular</div>
-            <div class="item-meta">Indústria • 2017 • Completa</div>
-            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
-          </div>
-        </div>
-        <div class="item-card">
-          <div class="item-illustration type-server" role="img" aria-label="Ilustração de servidor">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="28" y="24" width="64" height="48" rx="6" fill="#26a69a"/>
-              <rect x="36" y="32" width="48" height="4" fill="#80cbc4"/>
-              <rect x="36" y="40" width="48" height="4" fill="#80cbc4"/>
-              <rect x="36" y="48" width="48" height="4" fill="#80cbc4"/>
-              <rect x="36" y="56" width="32" height="4" fill="#80cbc4"/>
-            </svg>
-          </div>
-          <div class="item-body">
-            <div class="item-title">Servidor Rack 2U</div>
-            <div class="item-meta">TI • Dual Xeon • 128 GB RAM</div>
-            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
-          </div>
-        </div>
-        <div class="item-card">
-          <div class="item-illustration type-tools" role="img" aria-label="Ilustração de ferramentas">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="30" y="30" width="10" height="28" rx="2" fill="#fbc02d"/>
-              <rect x="28" y="26" width="14" height="6" rx="2" fill="#fdd835"/>
-              <path d="M74 26 l10 10 l-6 6 l-10 -10 z" fill="#ffa000"/>
-              <rect x="60" y="40" width="26" height="6" rx="3" fill="#ffca28"/>
-            </svg>
-          </div>
-          <div class="item-body">
-            <div class="item-title">Kit Ferramentas Pneumáticas</div>
-            <div class="item-meta">Oficina • Semi-novo</div>
-            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
-          </div>
-        </div>
-        <div class="item-card">
-          <div class="item-illustration type-office" role="img" aria-label="Ilustração de mobiliário de escritório">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="54" y="26" width="12" height="16" rx="2" fill="#f48fb1"/>
-              <rect x="48" y="42" width="24" height="12" rx="2" fill="#f06292"/>
-              <rect x="58" y="54" width="4" height="10" fill="#ad1457"/>
-              <rect x="46" y="64" width="28" height="4" fill="#ad1457"/>
-            </svg>
-          </div>
-          <div class="item-body">
-            <div class="item-title">Lote Mobiliário Escritório</div>
-            <div class="item-meta">Cadeiras • Mesas • Armários</div>
-            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
-          </div>
-        </div>
-        <div class="item-card">
-          <div class="item-illustration type-generator" role="img" aria-label="Ilustração de gerador">
-            <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
-              <rect x="22" y="36" width="76" height="26" rx="6" fill="#ef5350"/>
-              <polygon points="56,38 66,52 60,52 68,66 50,48 56,48" fill="#ffeb3b"/>
-              <rect x="30" y="44" width="14" height="6" fill="#ffcdd2"/>
-              <rect x="90" y="44" width="6" height="6" fill="#ffcdd2"/>
-            </svg>
-          </div>
-          <div class="item-body">
-            <div class="item-title">Gerador 150 kVA</div>
-            <div class="item-meta">Diesel • Silenciado • Pronto uso</div>
-            <div class="item-actions"><a href="#" class="btn btn-secondary">Ver detalhes</a></div>
+          <div class="item-card">
+            <div
+              class="item-illustration type-generator"
+              role="img"
+              aria-label="Ilustração de gerador"
+            >
+              <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+                <rect
+                  x="22"
+                  y="36"
+                  width="76"
+                  height="26"
+                  rx="6"
+                  fill="#ef5350"
+                />
+                <polygon
+                  points="56,38 66,52 60,52 68,66 50,48 56,48"
+                  fill="#ffeb3b"
+                />
+                <rect x="30" y="44" width="14" height="6" fill="#ffcdd2" />
+                <rect x="90" y="44" width="6" height="6" fill="#ffcdd2" />
+              </svg>
+            </div>
+            <div class="item-body">
+              <div class="item-title">Gerador 150 kVA</div>
+              <div class="item-meta">Diesel • Silenciado • Pronto uso</div>
+              <div class="item-actions">
+                <a href="#" class="btn btn-secondary">Ver detalhes</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="personas">
-    <div class="container">
-      <h2>Escolha seu Perfil</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Grandes Empresas Vendedoras</h3>
-          <p>Venda grandes volumes de ativos com suporte dedicado, compliance e alcance de compradores qualificados.</p>
-          <a href="#lead-gen" class="btn btn-primary">Falar com Especialista</a>
-        </div>
-        <div class="card">
-          <h3>Compradores Recorrentes</h3>
-          <p>Acesse ofertas personalizadas, recursos de busca avançada e finalize compras em um clique.</p>
-          <a href="#modalidades" class="btn btn-secondary">Ver Leilões</a>
-        </div>
-        <div class="card">
-          <h3>Compradores Iniciantes</h3>
-          <p>Aprenda como funciona cada modalidade com tutoriais e participe com segurança em sua primeira compra.</p>
-          <a href="#modalidades" class="btn btn-secondary">Saiba como Participar</a>
-        </div>
-        <div class="card">
-          <h3>Governo e Setor Público</h3>
-          <p>Conduza leilões legais e transparentes com suporte completo a exigências regulamentares.</p>
-          <a href="#lead-gen" class="btn btn-primary">Soluções para Governo</a>
+    <section id="personas">
+      <div class="container">
+        <h2>Escolha seu Perfil</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>Grandes Empresas Vendedoras</h3>
+            <p>
+              Venda grandes volumes de ativos com suporte dedicado, compliance e
+              alcance de compradores qualificados.
+            </p>
+            <a href="#lead-gen" class="btn btn-primary"
+              >Falar com Especialista</a
+            >
+          </div>
+          <div class="card">
+            <h3>Compradores Recorrentes</h3>
+            <p>
+              Acesse ofertas personalizadas, recursos de busca avançada e
+              finalize compras em um clique.
+            </p>
+            <a href="#modalidades" class="btn btn-secondary">Ver Leilões</a>
+          </div>
+          <div class="card">
+            <h3>Compradores Iniciantes</h3>
+            <p>
+              Aprenda como funciona cada modalidade com tutoriais e participe
+              com segurança em sua primeira compra.
+            </p>
+            <a href="#modalidades" class="btn btn-secondary"
+              >Saiba como Participar</a
+            >
+          </div>
+          <div class="card">
+            <h3>Governo e Setor Público</h3>
+            <p>
+              Conduza leilões legais e transparentes com suporte completo a
+              exigências regulamentares.
+            </p>
+            <a href="#lead-gen" class="btn btn-primary"
+              >Soluções para Governo</a
+            >
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="modalidades">
-    <div class="container">
-      <h2>Modalidades de Venda</h2>
-      <div class="cards">
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1581090700227-1e8b54a4e296?auto=format&fit=crop&w=800&q=60"
-               alt="Leilão"
-               class="card-img" />
-          <h3>Leilão</h3>
-          <ul>
-            <li>Competição aberta de lances</li>
-            <li>Maior lance ao final vence</li>
-            <li>Opcional: leilão público ou privado</li>
-          </ul>
-          <a href="/leiloes" class="btn btn-secondary">Participar de Leilões</a>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1565372954871-44c184a82c2c?auto=format&fit=crop&w=800&q=60"
-               alt="Tomada de Preço"
-               class="card-img" />
-          <h3>Tomada de Preço</h3>
-          <ul>
-            <li>Envio de proposta sigilosa</li>
-            <li>Maior oferta analisada e aprovada</li>
-            <li>Atualizações em tempo real via WhatsApp</li>
-          </ul>
-          <a href="/tomada-de-preco" class="btn btn-secondary">Fazer Proposta</a>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1581090700227-1e8b54a4e296?auto=format&fit=crop&w=800&q=60"
-               alt="Compre Já"
-               class="card-img" />
-          <h3>Compre Já</h3>
-          <ul>
-            <li>Compra imediata pelo valor fixo</li>
-            <li>Checkout simplificado em 1 clique</li>
-            <li>Segurança garantida pela plataforma</li>
-          </ul>
-          <a href="/compre-ja" class="btn btn-secondary">Comprar Agora</a>
-        </div>
-        <div class="card">
-          <img src="https://images.unsplash.com/photo-1587502536263-7ab321a220b9?auto=format&fit=crop&w=800&q=60"
-               alt="Mercado Balcão"
-               class="card-img" />
-          <h3>Mercado Balcão</h3>
-          <ul>
-            <li>Envie oferta e negocie diretamente</li>
-            <li>Condições flexíveis entre comprador e vendedor</li>
-            <li>Processo transparente e rápido</li>
-          </ul>
-          <a href="/mercado-balcao" class="btn btn-secondary">Negociar Oferta</a>
+    <section id="modalidades">
+      <div class="container">
+        <h2>Modalidades de Venda</h2>
+        <div class="cards">
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1581090700227-1e8b54a4e296?auto=format&fit=crop&w=800&q=60"
+              alt="Leilão"
+              class="card-img"
+            />
+            <h3>Leilão</h3>
+            <ul>
+              <li>Competição aberta de lances</li>
+              <li>Maior lance ao final vence</li>
+              <li>Opcional: leilão público ou privado</li>
+            </ul>
+            <a href="/leiloes" class="btn btn-secondary"
+              >Participar de Leilões</a
+            >
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1565372954871-44c184a82c2c?auto=format&fit=crop&w=800&q=60"
+              alt="Tomada de Preço"
+              class="card-img"
+            />
+            <h3>Tomada de Preço</h3>
+            <ul>
+              <li>Envio de proposta sigilosa</li>
+              <li>Maior oferta analisada e aprovada</li>
+              <li>Atualizações em tempo real via WhatsApp</li>
+            </ul>
+            <a href="/tomada-de-preco" class="btn btn-secondary"
+              >Fazer Proposta</a
+            >
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1581090700227-1e8b54a4e296?auto=format&fit=crop&w=800&q=60"
+              alt="Compre Já"
+              class="card-img"
+            />
+            <h3>Compre Já</h3>
+            <ul>
+              <li>Compra imediata pelo valor fixo</li>
+              <li>Checkout simplificado em 1 clique</li>
+              <li>Segurança garantida pela plataforma</li>
+            </ul>
+            <a href="/compre-ja" class="btn btn-secondary">Comprar Agora</a>
+          </div>
+          <div class="card">
+            <img
+              src="https://images.unsplash.com/photo-1587502536263-7ab321a220b9?auto=format&fit=crop&w=800&q=60"
+              alt="Mercado Balcão"
+              class="card-img"
+            />
+            <h3>Mercado Balcão</h3>
+            <ul>
+              <li>Envie oferta e negocie diretamente</li>
+              <li>Condições flexíveis entre comprador e vendedor</li>
+              <li>Processo transparente e rápido</li>
+            </ul>
+            <a href="/mercado-balcao" class="btn btn-secondary"
+              >Negociar Oferta</a
+            >
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="comparativo">
-    <div class="container">
-      <h2>Qual Modalidade é Ideal para Você?</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Critério</th><th>Leilão</th><th>Tomada de Preço</th><th>Compre Já</th><th>Mercado Balcão</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Transparência</td><td>Pública</td><td>Sigilosa</td><td>Imediata</td><td>Privada</td></tr>
-          <tr><td>Velocidade</td><td>Prazo definido</td><td>Prazo definido</td><td>Imediata</td><td>Flexível</td></tr>
-          <tr><td>Negociação</td><td>Competitiva</td><td>Sem concorrência visível</td><td>Sem negociação</td><td>Negociação direta</td></tr>
-          <tr><td>Atualizações</td><td>Dashboard</td><td>WhatsApp</td><td>E-mail</td><td>E-mail/WhatsApp</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="lead-gen">
-    <div class="container">
-      <h2>Fale com Nossa Equipe</h2>
-      <p>Preencha o formulário ou entre em contato direto pelo WhatsApp para soluções personalizadas.</p>
-      <div class="lead-gen">
-        <form action="/contato" method="post">
-          <input type="text" name="nome" placeholder="Seu nome completo" required />
-          <input type="email" name="email" placeholder="Seu e-mail" required />
-          <select name="perfil" required>
-            <option value="">Selecione seu perfil</option>
-            <option>Grande Empresa Vendedora</option>
-            <option>Comprador Recorrente</option>
-            <option>Comprador Iniciante</option>
-            <option>Governo</option>
-          </select>
-          <textarea name="mensagem" rows="4" placeholder="Como podemos ajudar?" required></textarea>
-          <button type="submit" class="btn btn-primary">Enviar Contato</button>
-        </form>
-        <p>Ou fale agora no WhatsApp:</p>
-        <a href="https://wa.me/5511987654321?text=Ol%C3%A1%20Superbid%2C%20gostaria%20de%20ajuda" target="_blank" class="btn btn-whatsapp">
-          <img src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/whatsapp.svg" alt="WhatsApp" style="width:20px;vertical-align:middle;margin-right:8px;">
-          WhatsApp
-        </a>
+    <section id="comparativo">
+      <div class="container">
+        <h2>Qual Modalidade é Ideal para Você?</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Critério</th>
+              <th>Leilão</th>
+              <th>Tomada de Preço</th>
+              <th>Compre Já</th>
+              <th>Mercado Balcão</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Transparência</td>
+              <td>Pública</td>
+              <td>Sigilosa</td>
+              <td>Imediata</td>
+              <td>Privada</td>
+            </tr>
+            <tr>
+              <td>Velocidade</td>
+              <td>Prazo definido</td>
+              <td>Prazo definido</td>
+              <td>Imediata</td>
+              <td>Flexível</td>
+            </tr>
+            <tr>
+              <td>Negociação</td>
+              <td>Competitiva</td>
+              <td>Sem concorrência visível</td>
+              <td>Sem negociação</td>
+              <td>Negociação direta</td>
+            </tr>
+            <tr>
+              <td>Atualizações</td>
+              <td>Dashboard</td>
+              <td>WhatsApp</td>
+              <td>E-mail</td>
+              <td>E-mail/WhatsApp</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <p>© 2025 Superbid Exchange. Todos os direitos reservados.</p>
-    <p><a href="/quem-somos">Sobre a Superbid</a> | <a href="/contato">Fale Conosco</a> | <a href="/blog">Blog</a></p>
-  </footer>
+    <section id="lead-gen">
+      <div class="container">
+        <h2>Fale com Nossa Equipe</h2>
+        <p>
+          Preencha o formulário ou entre em contato direto pelo WhatsApp para
+          soluções personalizadas.
+        </p>
+        <div class="lead-gen">
+          <form action="/contato" method="post">
+            <input
+              type="text"
+              name="nome"
+              placeholder="Seu nome completo"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Seu e-mail"
+              required
+            />
+            <select name="perfil" required>
+              <option value="">Selecione seu perfil</option>
+              <option>Grande Empresa Vendedora</option>
+              <option>Comprador Recorrente</option>
+              <option>Comprador Iniciante</option>
+              <option>Governo</option>
+            </select>
+            <textarea
+              name="mensagem"
+              rows="4"
+              placeholder="Como podemos ajudar?"
+              required
+            ></textarea>
+            <button type="submit" class="btn btn-primary">
+              Enviar Contato
+            </button>
+          </form>
+          <p>Ou fale agora no WhatsApp:</p>
+          <a
+            href="https://wa.me/5511987654321?text=Ol%C3%A1%20Superbid%2C%20gostaria%20de%20ajuda"
+            target="_blank"
+            class="btn btn-whatsapp"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/whatsapp.svg"
+              alt="WhatsApp"
+            />
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
 
-</body>
+    <footer>
+      <p>© 2025 Superbid Exchange. Todos os direitos reservados.</p>
+      <p>
+        <a href="/quem-somos">Sobre a Superbid</a> |
+        <a href="/contato">Fale Conosco</a> | <a href="/blog">Blog</a>
+      </p>
+    </footer>
+  </body>
 </html>
